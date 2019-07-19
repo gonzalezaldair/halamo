@@ -118,7 +118,7 @@
 	<script src="vistas/js/xeditable.js"></script>
 	<script src="vistas/js/sweetalert.min.js"></script>
 </head>
-<body class="hold-transition skin-blue-light sidebar-mini login-page sidebar-collapse">
+<body class="hold-transition skin-green-light sidebar-mini login-page sidebar-collapse">
 	<?php
 	if(isset($_SESSION["validar"]) && $_SESSION["validar"] === true)
 	{
@@ -126,13 +126,14 @@
 		/*--==========================================
 		menu superior
 		===========================================-*/
-		include 'vistas/modulos/nav.php';
+		include 'vistas/modulos/navegador.php';
 		/*--==========================================
 		menu lateral
 		===========================================-*/
 		include 'vistas/modulos/lateral.php';
 		if(isset($_GET["action"])){
-			if($_GET["action"]== "inicio" ){
+			if($_GET["action"]== "inicio" ||
+				$_GET["action"]== "salir"){
 				include "modulos/".$_GET["action"].".php";
 				include 'modulos/footer.php';
 		}else{
