@@ -1,0 +1,8 @@
+*.pdf
+*.xlsx
+*.png
+*.jpeg
+*.jpg
+*.gif
+*.sql
+modelos/conexion.php
