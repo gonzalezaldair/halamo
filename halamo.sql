@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-07-2019 a las 19:05:12
--- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.2.13
+-- Tiempo de generación: 20-07-2019 a las 01:05:55
+-- Versión del servidor: 10.1.38-MariaDB
+-- Versión de PHP: 7.1.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,22 +44,24 @@ CREATE TABLE `cliente` (
 CREATE TABLE `funcionalidades` (
   `Id` bigint(20) NOT NULL,
   `Nombre` text COLLATE utf8_spanish_ci NOT NULL,
-  `Descripcion` text COLLATE utf8_spanish_ci NOT NULL
+  `Descripcion` text COLLATE utf8_spanish_ci NOT NULL,
+  `Ruta` text COLLATE utf8_spanish_ci NOT NULL,
+  `Icon` text COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `funcionalidades`
 --
 
-INSERT INTO `funcionalidades` (`Id`, `Nombre`, `Descripcion`) VALUES
-(1, 'Gestión Personas', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-(2, 'Gestión Reservas', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-(3, 'Gestión Habitaciones', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-(4, 'Gestión Usuarios', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-(5, 'Gestion Reportes', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-(6, 'Gestión Rol', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-(7, 'Configuración', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-(8, 'Administrador de Acceso', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
+INSERT INTO `funcionalidades` (`Id`, `Nombre`, `Descripcion`, `Ruta`, `Icon`) VALUES
+(1, 'Gestión Personas', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'persona', 'fa fa-user-plus'),
+(2, 'Gestión Reservas', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'reserva', 'fa fa-calendar'),
+(3, 'Gestión Habitaciones', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'habitaciones', 'fa fa-h-square'),
+(4, 'Gestión Usuarios', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'usuario', 'fa fa-user'),
+(5, 'Gestion Reportes', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'reporte', 'fa fa-pie-chart'),
+(6, 'Gestión Rol', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'rol', 'fa fa-users'),
+(7, 'Configuración', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'configuracion', 'fa fa-cogs'),
+(8, 'Administrador de Acceso', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'acceso', 'fa fa-lock');
 
 -- --------------------------------------------------------
 
@@ -99,6 +101,16 @@ CREATE TABLE `permisos` (
   `Descripcion` text COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `permisos`
+--
+
+INSERT INTO `permisos` (`Id`, `Nombre`, `Descripcion`) VALUES
+(1, 'Visualizar', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, vel, nemo. Fugit optio quam, iusto et odio porro autem doloremque in officiis nesciunt possimus repudiandae facere ullam amet laborum ut.'),
+(2, 'Agregar', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, vel, nemo. Fugit optio quam, iusto et odio porro autem doloremque in officiis nesciunt possimus repudiandae facere ullam amet laborum ut.'),
+(3, 'Editar', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, vel, nemo. Fugit optio quam, iusto et odio porro autem doloremque in officiis nesciunt possimus repudiandae facere ullam amet laborum ut.'),
+(4, 'Eliminar', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, vel, nemo. Fugit optio quam, iusto et odio porro autem doloremque in officiis nesciunt possimus repudiandae facere ullam amet laborum ut.');
+
 -- --------------------------------------------------------
 
 --
@@ -115,6 +127,15 @@ CREATE TABLE `persona` (
   `Movil` int(11) NOT NULL,
   `Telefono` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `persona`
+--
+
+INSERT INTO `persona` (`Num_Documento`, `Nombre`, `Apellido`, `Direccion`, `Correo`, `TIPO_DOC`, `Movil`, `Telefono`) VALUES
+('1', 'Recepcionista', '', '', 'recepcionista@gmail.com', 1, 0, 0),
+('1090472103', 'ALDAIR', 'GONZALEZ', 'CUCUTA', 'aldair@gmail.com', 1, 12121, 2121),
+('2', 'Cliente', '', '', 'cliente@gmail.com', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -164,6 +185,25 @@ CREATE TABLE `rol_funcionalidad` (
   `FUNCIONALIDAD` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `rol_funcionalidad`
+--
+
+INSERT INTO `rol_funcionalidad` (`ROL`, `FUNCIONALIDAD`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(2, 1),
+(2, 2),
+(2, 3),
+(2, 4),
+(3, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -174,6 +214,14 @@ CREATE TABLE `tipo_cliente` (
   `Id_tc` bigint(20) NOT NULL,
   `Descripcion` text COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tipo_cliente`
+--
+
+INSERT INTO `tipo_cliente` (`Id_tc`, `Descripcion`) VALUES
+(1, 'Habitual'),
+(2, 'Esporadico');
 
 -- --------------------------------------------------------
 
@@ -197,6 +245,15 @@ CREATE TABLE `tipo_documento` (
   `Descripcion` text COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `tipo_documento`
+--
+
+INSERT INTO `tipo_documento` (`Id_tp`, `Descripcion`) VALUES
+(1, 'Cedula de Ciudadania'),
+(2, 'Tarjeta de Identidad'),
+(3, 'Pasaporte');
+
 -- --------------------------------------------------------
 
 --
@@ -207,6 +264,15 @@ CREATE TABLE `tipo_habitación` (
   `Id_th` bigint(20) NOT NULL,
   `Descripcion` text COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tipo_habitación`
+--
+
+INSERT INTO `tipo_habitación` (`Id_th`, `Descripcion`) VALUES
+(1, 'Simple'),
+(2, 'Doble'),
+(3, 'Matrimonial');
 
 -- --------------------------------------------------------
 
@@ -223,6 +289,15 @@ CREATE TABLE `usuario` (
   `Activo` varchar(1) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Y',
   `PERSONA` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`usuario`, `contrasena`, `ROL`, `Agregado`, `Log`, `Activo`, `PERSONA`) VALUES
+('aldair@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auQstvAs9a/DaWE6VrBHcKoyValeASYee', 1, '2019-07-19', '', 'Y', '1090472103'),
+('cliente@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auQstvAs9a/DaWE6VrBHcKoyValeASYee', 3, '2019-07-19', '', 'Y', '2'),
+('recepcionista@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auQstvAs9a/DaWE6VrBHcKoyValeASYee', 2, '2019-07-19', '', 'Y', '1');
 
 --
 -- Índices para tablas volcadas
@@ -362,7 +437,7 @@ ALTER TABLE `habitacion`
 -- AUTO_INCREMENT de la tabla `permisos`
 --
 ALTER TABLE `permisos`
-  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `reservas`
@@ -380,7 +455,7 @@ ALTER TABLE `rol`
 -- AUTO_INCREMENT de la tabla `tipo_cliente`
 --
 ALTER TABLE `tipo_cliente`
-  MODIFY `Id_tc` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_tc` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_descuento`
@@ -392,13 +467,13 @@ ALTER TABLE `tipo_descuento`
 -- AUTO_INCREMENT de la tabla `tipo_documento`
 --
 ALTER TABLE `tipo_documento`
-  MODIFY `Id_tp` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_tp` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_habitación`
 --
 ALTER TABLE `tipo_habitación`
-  MODIFY `Id_th` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_th` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
