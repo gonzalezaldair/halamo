@@ -2,7 +2,7 @@
   <!-- Logo -->
     <a href="inicio" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>MA</b></span>
+      <span class="logo-mini"><b>HA</b></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg">Hotel <b>ALAMO</b>
         <!--<img src="vistas/dist/img/logopenalosablanco-02.png"  alt="logo hotel" width="150px">-->

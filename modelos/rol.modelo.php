@@ -15,7 +15,7 @@ class RolModelo{
 
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY $orden DESC");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY Id DESC");
 
 			$stmt -> execute();
 

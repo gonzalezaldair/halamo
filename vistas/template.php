@@ -117,6 +117,7 @@
 	</script>
 	<script src="vistas/js/xeditable.js"></script>
 	<script src="vistas/js/sweetalert.min.js"></script>
+
 </head>
 <body class="hold-transition skin-green-light sidebar-mini login-page sidebar-collapse">
 	<?php
@@ -133,13 +134,21 @@
 		include 'vistas/modulos/lateral.php';
 		if(isset($_GET["action"])){
 			if($_GET["action"]== "inicio" ||
-				$_GET["action"]== "salir"){
+				$_GET["action"]== "salir" ||
+				$_GET["action"]== "acceso" ||
+				$_GET["action"]== "configuracion" ||
+				$_GET["action"]== "habitaciones" ||
+				$_GET["action"]== "persona" ||
+				$_GET["action"]== "reporte" ||
+				$_GET["action"]== "reserva" ||
+				$_GET["action"]== "rol" ||
+				$_GET["action"]== "usuario"){
 				include "modulos/".$_GET["action"].".php";
 				include 'modulos/footer.php';
-		}else{
-			include 'modulos/404.php';
-			include 'modulos/footer.php';
-		}
+			}else{
+				include 'modulos/404.php';
+				include 'modulos/footer.php';
+			}
 
 	}else
 	{
@@ -151,8 +160,25 @@
 
 else
 {
-	include 'modulos/login.php';
+	if (isset($_GET["action"])) {
+		if ($_GET["action"]== "registro") {
+			include "modulos/".$_GET["action"].".php";
+		}
+		else{
+		include 'modulos/login.php';
+		}
+	}
+	else{
+		include 'modulos/login.php';
+	}
 }?>
+
+
+	<script src="vistas/js/persona.js"></script>
+	<script src="vistas/js/usuario.js"></script>
+	<script src="vistas/js/rol.js"></script>
+	<script src="vistas/js/habitacion.js"></script>
+	<script src="vistas/js/tipohab.js"></script>
 
 </body>
 </html>
