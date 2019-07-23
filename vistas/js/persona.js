@@ -6,9 +6,50 @@
 })*/
 $(document).ready(function() {
   /*=============================
-cargar la tabla de aritculos ma
+cargar la tabla de persona
 =============================*/
-  var objetoDataTables_personal = $('#tablapersona').DataTable({
+
+tablapersona();
+
+  /*=============================
+TRAER DATOS PERSONA
+=============================*/
+
+traerdatoseditarpersona();
+
+
+});
+
+var traerdatoseditarpersona = function ()
+{
+  $("#tablapersona").on("click", "button.upd", function(){
+    idpersona = $(this).attr("id_persona");
+    datos = new FormData();
+    datos.append('acc', 'traerdatos');
+    datos.append('idpersona', idpersona);
+    $.ajax({
+        method: "POST",
+        url: "ajax/persona.ajax.php",
+        data: datos
+      }).done(function(data) {
+        //console.log("data", data);
+        /*var json = jQuery.parseJSON(data);
+        $('#tipodoceditar').val(json[0].cedula);
+        $('#cedulaeditar').val(json[0].nombres);
+        $('#nombreeditar').val(json[0].telefono);
+        $('#apellidoeditar').val(json[0].fijo);
+        $('#telefonoeditar').val(json[0].correo);
+        $('#correoeditar').val(json[0].direccion);
+        $('#direccioneditar').val(json[0].alias);*/
+        $("#editarPersona").modal("show");
+      });
+  });
+}
+
+
+var tablapersona = function()
+{
+  $('#tablapersona').DataTable({
     "ajax": "ajax/persona.ajax.php",
     "deferRender": true,
     "retrieve": true,
@@ -39,5 +80,4 @@ cargar la tabla de aritculos ma
       }
     }
   });
-
-});
+}

@@ -1,3 +1,4 @@
+
 <?php
 
 require_once '../modelos/persona.modelo.php';
@@ -14,15 +15,17 @@ class tablaPersona{
 		$persona = PersonaControlador::ctrmostrarpersona($item, $valor);
 		$datosJson = '{"data":[';
 		for ($i=0; $i < count($persona); $i++) {
+			$botones = "<button type='button' id_persona='".$persona[$i]["Num_Documento"]."' class='upd btn btn-success btn-xs'><i class='fa fa-pencil-square-o'></i></button> <button  type='button' nombre_persona='".$persona[$i]["Nombre"]."' id_persona='".$persona[$i]["Num_Documento"]."' class='del btn btn-danger btn-xs'><i class='fa fa-trash-o'></i></button>";
 			$tipodoc = TipoDocControlador::ctrmostrartipodoc("Id_tp",$persona[$i]["TIPO_DOC"]);
+			$nombre = $persona[$i]["Nombre"]. " ".$persona[$i]["Apellido"];
 				$datosJson .='[
 						"'.$persona[$i]["Num_Documento"].'",
-						"'.$persona[$i]["Nombre"].'",
-						"'.$persona[$i]["Apellido"].'",
+						"'.$nombre.'",
 						"'.$persona[$i]["Direccion"].'",
 						"'.$persona[$i]["Correo"].'",
 						"'.$tipodoc["Descripcion"].'",
-						"'.$persona[$i]["Movil"].'"
+						"'.$persona[$i]["Movil"].'",
+						"'.$botones.'"
 					],';
 		}
 		//para quitar la ultima coma y evitar error de sintaxis JSON
@@ -33,5 +36,20 @@ class tablaPersona{
 	}
 }
 
-$activarpersona = new tablaPersona();
-$activarpersona -> mostrartablapersona();
+if (isset($_POST["acc"])) {
+	switch ($_POST["acc"]) {
+		case 'traerdatos':
+			$item = "Num_Documento";
+			$valor = $_POST["idpersona"];
+			$traerdatospersona = PersonaControlador::ctrmostrarpersona($item, $valor);
+			return $traerdatospersona;
+			break;
+
+		default:
+			# code...
+			break;
+	}
+}else{
+	$activarpersona = new tablaPersona();
+	$activarpersona -> mostrartablapersona();
+}
