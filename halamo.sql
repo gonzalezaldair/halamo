@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-07-2019 a las 01:05:55
--- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.1.28
+-- Tiempo de generación: 23-07-2019 a las 21:14:33
+-- Versión del servidor: 10.1.37-MariaDB
+-- Versión de PHP: 7.2.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -71,12 +71,19 @@ INSERT INTO `funcionalidades` (`Id`, `Nombre`, `Descripcion`, `Ruta`, `Icon`) VA
 
 CREATE TABLE `habitacion` (
   `Codigo` bigint(20) NOT NULL,
-  `Estado` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `Disponible` varchar(1) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Y',
   `Num_Habitacion` int(11) NOT NULL,
   `Precio` float NOT NULL,
   `TIPO_HABITACION` bigint(20) NOT NULL,
   `Imagen` text COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `habitacion`
+--
+
+INSERT INTO `habitacion` (`Codigo`, `Disponible`, `Num_Habitacion`, `Precio`, `TIPO_HABITACION`, `Imagen`) VALUES
+(1, 'Y', 1, 20000, 1, '');
 
 -- --------------------------------------------------------
 
@@ -133,9 +140,9 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`Num_Documento`, `Nombre`, `Apellido`, `Direccion`, `Correo`, `TIPO_DOC`, `Movil`, `Telefono`) VALUES
-('1', 'Recepcionista', '', '', 'recepcionista@gmail.com', 1, 0, 0),
+('1', 'Recepcionista', 'rr', 'cc', 'recepcionista@gmail.com', 1, 0, 0),
 ('1090472103', 'ALDAIR', 'GONZALEZ', 'CUCUTA', 'aldair@gmail.com', 1, 12121, 2121),
-('2', 'Cliente', '', '', 'cliente@gmail.com', 1, 0, 0);
+('2', 'Cliente', 'cc', 'ccccc', 'cliente@gmail.com', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -170,9 +177,9 @@ CREATE TABLE `rol` (
 --
 
 INSERT INTO `rol` (`Id`, `Nombre`, `Descripcion`) VALUES
-(1, 'Administrador', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-(2, 'Recepcionista', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.'),
-(3, 'Cliente', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\ncillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\nproident, sunt in culpa qui officia deserunt mollit anim id est laborum.');
+(1, 'Administrador', 'Lorem ipsum dolor sit amet'),
+(2, 'Recepcionista', 'Lorem ipsum dolor sit amet'),
+(3, 'Cliente', 'Lorem ipsum dolor sit amet');
 
 -- --------------------------------------------------------
 
@@ -257,19 +264,19 @@ INSERT INTO `tipo_documento` (`Id_tp`, `Descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipo_habitación`
+-- Estructura de tabla para la tabla `tipo_habitacion`
 --
 
-CREATE TABLE `tipo_habitación` (
+CREATE TABLE `tipo_habitacion` (
   `Id_th` bigint(20) NOT NULL,
   `Descripcion` text COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `tipo_habitación`
+-- Volcado de datos para la tabla `tipo_habitacion`
 --
 
-INSERT INTO `tipo_habitación` (`Id_th`, `Descripcion`) VALUES
+INSERT INTO `tipo_habitacion` (`Id_th`, `Descripcion`) VALUES
 (1, 'Simple'),
 (2, 'Doble'),
 (3, 'Matrimonial');
@@ -397,9 +404,9 @@ ALTER TABLE `tipo_documento`
   ADD UNIQUE KEY `Id_tp` (`Id_tp`);
 
 --
--- Indices de la tabla `tipo_habitación`
+-- Indices de la tabla `tipo_habitacion`
 --
-ALTER TABLE `tipo_habitación`
+ALTER TABLE `tipo_habitacion`
   ADD PRIMARY KEY (`Id_th`),
   ADD UNIQUE KEY `Id_th` (`Id_th`);
 
@@ -431,7 +438,7 @@ ALTER TABLE `funcionalidades`
 -- AUTO_INCREMENT de la tabla `habitacion`
 --
 ALTER TABLE `habitacion`
-  MODIFY `Codigo` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Codigo` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `permisos`
@@ -470,9 +477,9 @@ ALTER TABLE `tipo_documento`
   MODIFY `Id_tp` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `tipo_habitación`
+-- AUTO_INCREMENT de la tabla `tipo_habitacion`
 --
-ALTER TABLE `tipo_habitación`
+ALTER TABLE `tipo_habitacion`
   MODIFY `Id_th` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
@@ -491,7 +498,7 @@ ALTER TABLE `cliente`
 -- Filtros para la tabla `habitacion`
 --
 ALTER TABLE `habitacion`
-  ADD CONSTRAINT `habitacion_ibfk_1` FOREIGN KEY (`TIPO_HABITACION`) REFERENCES `tipo_habitación` (`Id_th`);
+  ADD CONSTRAINT `habitacion_ibfk_1` FOREIGN KEY (`TIPO_HABITACION`) REFERENCES `tipo_habitacion` (`Id_th`);
 
 --
 -- Filtros para la tabla `perfun`
