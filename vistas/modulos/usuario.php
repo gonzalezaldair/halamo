@@ -60,7 +60,7 @@
             <div class="col-md-6 col-lg-6">
               <div class="input-group form-group">
                 <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
-                <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese Nombre" class="form-control">
+                <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese Contraseña" class="form-control">
               </div>
             </div>
             <div class="col-md-6 col-lg-6">

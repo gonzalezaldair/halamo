@@ -14,4 +14,46 @@ class RolControlador{
 		$respuestarol = RolModelo::mdlRolfuncionalidad($tabla,$item,$_SESSION["rol"]);
 		return $respuestarol;
 	}
+
+	public static function ctrregistrarrolfuncionalidad()
+	{
+		if (isset($_POST["rol"])) {
+			$tabla = "rol_funcionalidad";
+			$functionalidad = explode(",",$_POST["funcionalidad"]);
+			/*for ($i=0; $i < count($functionalidad); $i++) {
+				$datoscontrolador  = array('rol' => $_POST["rol"], 'funcionalidad' => $functionalidad[i]);
+				$respuestarol = RolModelo::mdlRolfuncionalidad($tabla, $datoscontrolador);
+			}*/
+			//$datoscontrolador  = array('rol' => $_POST["rol"], 'funcionalidad' => $_POST);
+			//$respuestarol = RolModelo::mdlRolfuncionalidad($tabla);
+			//return $respuestarol;
+		}
+	}
+
+
+	public static function ctrcrearrol()
+	{
+		if (isset($_POST["nombre"])) {
+			$datoscontrolador = array('nombre' => $_POST["nombre"], 'descripcion' => $_POST["detalles"]);
+			$respuestarolcrear = RolModelo::mdlcrearrol("rol", $datoscontrolador);
+			echo $respuestarolcrear;
+		}
+	}
+
+	public static function ctractualizarrol()
+	{
+		if (isset($_POST["roleditar"])) {
+			$datoscontrolador = array('nombre' => $_POST["nombreeditar"], 'descripcion' => $_POST["detalleseditar"], 'id' => $_POST["roleditar"]);
+			$respuestarolactu = RolModelo::mdlactualizarrol("rol", $datoscontrolador);
+			echo $respuestarolactu;
+		}
+	}
+
+	public static function ctraeliminarrol()
+	{
+		if (isset($_POST["idrol"])) {
+			$respuestaeliminarrol = RolModelo::mdlaeliminarrol("rol",$_POST["idrol"]);
+			return $respuestaeliminarrol;
+		}
+	}
 }

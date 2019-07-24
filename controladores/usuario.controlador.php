@@ -15,7 +15,7 @@ class UsuarioControlador{
 			$encrypt =crypt($_POST["contrasena"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 			$datoscontrolador = array('correo' => $_POST["correo"], 'contrasena' => $encrypt,  'rol' => $_POST["rol"], 'persona' => $_POST["persona"], "agregado" => $fecha);
 			$respuestausercrear = UsuarioModelo::mdlcrearusuario("usuario", $datoscontrolador);
-			return $respuestausercrear;
+			echo $respuestausercrear;
 		}
 	}
 

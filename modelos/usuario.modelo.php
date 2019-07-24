@@ -34,14 +34,14 @@ class UsuarioModelo{
 	public function mdlcrearusuario($tabla, $datosmodelo)
 	{
 		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(usuario, contrasena, ROL, Agregado, PERSONA) VALUES (:usuario, :contrasena, :rol, :agregado, :persona)");
-		$stmt -> bindParam(":usuario", $datosmodelo["usuario"], PDO::PARAM_STR);
+		$stmt -> bindParam(":usuario", $datosmodelo["correo"], PDO::PARAM_STR);
 		$stmt -> bindParam(":contrasena", $datosmodelo["contrasena"], PDO::PARAM_STR);
 		$stmt -> bindParam(":rol", $datosmodelo["rol"], PDO::PARAM_INT);
 		$stmt -> bindParam(":agregado", $datosmodelo["agregado"], PDO::PARAM_STR);
 		$stmt -> bindParam(":persona", $datosmodelo["persona"], PDO::PARAM_STR);
 		if($stmt->execute())
 		{
-			return true;
+			return "ok";
 		}
 		else
 		{
@@ -59,7 +59,7 @@ class UsuarioModelo{
 		$stmt -> bindParam(":usuario", $datosmodelo["usuario"], PDO::PARAM_STR);
 		if($stmt->execute())
 		{
-			return true;
+			return "ok";
 		}
 		else
 		{
@@ -77,7 +77,7 @@ class UsuarioModelo{
 		$stmt -> bindParam(":usuario", $valor, PDO::PARAM_STR);
 		if($stmt->execute())
 		{
-			return true;
+			return "ok";
 		}
 		else
 		{

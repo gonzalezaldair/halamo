@@ -53,4 +53,60 @@ class RolModelo{
 
 		$stmt = null;
 	}
+
+
+
+	public function mdlcrearrol($tabla, $datosmodelo)
+	{
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (Nombre, Descripcion) VALUES (:nombre, :descripcion)");
+		$stmt -> bindParam(":nombre", $datosmodelo["nombre"], PDO::PARAM_STR);
+		$stmt -> bindParam(":descripcion", $datosmodelo["descripcion"], PDO::PARAM_STR);
+		if($stmt->execute())
+		{
+			return "ok";
+		}
+		else
+		{
+			$err = $stmt->errorInfo();
+			return $err[2];
+		}
+		$stmt -> close();
+		$stmt = null;
+	}
+	public function mdlactualizarrol($tabla, $datosmodelo)
+	{
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET Nombre= :nombre,Descripcion= :descripcion WHERE Id = :id");
+		$stmt -> bindParam(":nombre", $datosmodelo["nombre"], PDO::PARAM_STR);
+		$stmt -> bindParam(":descripcion", $datosmodelo["descripcion"], PDO::PARAM_INT);
+		$stmt -> bindParam(":id", $datosmodelo["id"], PDO::PARAM_STR);
+		if($stmt->execute())
+		{
+			return "ok";
+		}
+		else
+		{
+			$err = $stmt->errorInfo();
+			return $err[2];
+		}
+		$stmt -> close();
+		$stmt = null;
+	}
+
+
+	public static function mdlaeliminarrol($tabla, $valor)
+	{
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE Id = :id");
+		$stmt -> bindParam(":id", $valor, PDO::PARAM_STR);
+		if($stmt->execute())
+		{
+			return "ok";
+		}
+		else
+		{
+			$err = $stmt->errorInfo();
+			return $err[2];
+		}
+		$stmt -> close();
+		$stmt = null;
+	}
 }

@@ -78,10 +78,10 @@ var crearusuario = function()
     $.ajax({
         method: "POST",
         url: "ajax/usuario.ajax.php",
-        data: formenuevapersona
+        data: formenuevausuario
       }).done(function(data) {
         console.log("data", data);
-        if (data)
+        if (data = "ok")
         {
           tablapersona();
           alert("exitos");
@@ -124,8 +124,7 @@ var editarusuario = function()
         url: "ajax/usuario.ajax.php",
         data: formeditar
       }).done(function(data) {
-        console.log("data", data);
-        if (data)
+        if (data = "ok")
         {
           tablapersona();
           alert("exitos");
@@ -148,10 +147,8 @@ var eliminarusuario = function ()
         url: "ajax/usuario.ajax.php",
         data: {"acc": "del", "idusuario": idusuario}
       }).done(function(data) {
-        console.log("data", data);
-        if (data)
+        if (data = "ok")
         {
-          console.log("respuesta true del servidor", data);
           tablapersona();
           alert("exitos");
         }else{
