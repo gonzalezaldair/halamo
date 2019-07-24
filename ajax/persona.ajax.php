@@ -38,15 +38,28 @@ class tablaPersona{
 
 if (isset($_POST["acc"])) {
 	switch ($_POST["acc"]) {
-		case 'traerdatos':
+		case 'c':
+			$crearpersona = new PersonaControlador();
+			$crearpersona -> ctrcrearpersona();
+			break;
+		case 'traer':
 			$item = "Num_Documento";
 			$valor = $_POST["idpersona"];
 			$traerdatospersona = PersonaControlador::ctrmostrarpersona($item, $valor);
-			return $traerdatospersona;
+			echo json_encode($traerdatospersona);
+			break;
+		case 'upd':
+			$actualizarpersona = new PersonaControlador();
+			$actualizarpersona -> ctractualizarpersona();
+			break;
+		case 'del':
+			$eliminarpersona = new PersonaControlador();
+			$eliminarpersona -> ctraeliminarpersona();
 			break;
 
 		default:
-			# code...
+			$activarpersona = new tablaPersona();
+			$activarpersona -> mostrartablapersona();
 			break;
 	}
 }else{

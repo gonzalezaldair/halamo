@@ -12,41 +12,31 @@ cargar la tabla de persona
 tablapersona();
 
   /*=============================
+CREAR PERSONA
+=============================*/
+
+crearpersona();
+
+  /*=============================
 TRAER DATOS PERSONA
 =============================*/
 
 traerdatoseditarpersona();
 
+  /*=============================
+EDITAR PERSONA
+=============================*/
+
+editarpersona();
+
+ /*=============================
+ELIMINAR PERSONA
+=============================*/
+
+eliminarpersona();
+
 
 });
-
-var traerdatoseditarpersona = function ()
-{
-  $("#tablapersona").on("click", "button.upd", function(){
-    idpersona = $(this).attr("id_persona");
-    datos = new FormData();
-    datos.append('acc', 'traerdatos');
-    datos.append('idpersona', idpersona);
-    $.ajax({
-        method: "POST",
-        url: "ajax/persona.ajax.php",
-        data: datos
-      }).done(function(data) {
-        //console.log("data", data);
-        /*var json = jQuery.parseJSON(data);
-        $('#tipodoceditar').val(json[0].cedula);
-        $('#cedulaeditar').val(json[0].nombres);
-        $('#nombreeditar').val(json[0].telefono);
-        $('#apellidoeditar').val(json[0].fijo);
-        $('#telefonoeditar').val(json[0].correo);
-        $('#correoeditar').val(json[0].direccion);
-        $('#direccioneditar').val(json[0].alias);*/
-        $("#editarPersona").modal("show");
-      });
-  });
-}
-
-
 var tablapersona = function()
 {
   $('#tablapersona').DataTable({
@@ -79,5 +69,98 @@ var tablapersona = function()
         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
       }
     }
+  });
+}
+
+
+var crearpersona = function()
+{
+  $("#crearPersona").on("click", function(){
+    var formenuevapersona = $("#nuevaPersonaform").serialize();
+    $.ajax({
+        method: "POST",
+        url: "ajax/persona.ajax.php",
+        data: formenuevapersona
+      }).done(function(data) {
+        console.log("data", data);
+        if (data)
+        {
+          tablapersona();
+          alert("exitos");
+          $("#NuevaPersona").modal("hide");
+        }else{
+          alert("error");
+        }
+      });
+  });
+}
+
+
+
+var traerdatoseditarpersona = function ()
+{
+  $("#tablapersona").on("click", "button.upd", function(){
+    idpersona = $(this).attr("id_persona");
+    $.ajax({
+        method: "POST",
+        url: "ajax/persona.ajax.php",
+        data: {"acc": "traer", "idpersona": idpersona}
+      }).done(function(data) {
+        var json = jQuery.parseJSON(data);
+        $('#tipodoceditar').val(json.cedula);
+        $('#cedulaeditar').val(json.Num_Documento);
+        $('#nombreeditar').val(json.Nombre);
+        $('#apellidoeditar').val(json.Apellido);
+        $('#telefonoeditar').val(json.Movil);
+        $('#correoeditar').val(json.Correo);
+        $('#direccioneditar').val(json.Direccion);
+        $("#editarpersonamodal").modal("show");
+      });
+  });
+}
+
+
+var editarpersona = function()
+{
+  $("#editarPersona").on("click", function(){
+    var formeditar = $("#editarPersonaform").serialize();
+    $.ajax({
+        method: "POST",
+        url: "ajax/persona.ajax.php",
+        data: formeditar
+      }).done(function(data) {
+        console.log("data", data);
+        if (data)
+        {
+          tablapersona();
+          alert("exitos");
+        }else{
+          alert("error");
+        }
+        $("#editarpersonamodal").modal("hide");
+      });
+  });
+}
+
+
+
+var eliminarpersona = function ()
+{
+  $("#tablapersona").on("click", "button.del", function(){
+    idpersona = $(this).attr("id_persona");
+    $.ajax({
+        method: "POST",
+        url: "ajax/persona.ajax.php",
+        data: {"acc": "del", "idpersona": idpersona}
+      }).done(function(data) {
+        console.log("data", data);
+        if (data)
+        {
+          tablapersona();
+          alert("exitos");
+        }else{
+          alert("error");
+        }
+      });
   });
 }

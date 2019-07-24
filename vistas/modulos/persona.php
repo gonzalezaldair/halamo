@@ -16,7 +16,7 @@
             <button type="button" id="btn_nuevo" data-toggle="modal" data-target="#NuevaPersona" class="btn btn-primary btn-md"><i class="fa fa-plus">   </i>    Agregar</button>
           </div>
           <div class="box-body">
-              <table id="tablapersona" class="table table-bordered table-striped">
+              <table id="tablapersona" class="table table-bordered table-striped dt-responsive" style="width: 100%">
                 <thead>
                   <tr>
                     <th>Cedula</th>
@@ -40,23 +40,27 @@
 <!--=====================================================
                       NUEVA PERSONA
   ===================================================-->
-  <div class="modal fade" id="NuevaPersona" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="NuevaPersona" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h4 style="font-size: 20px; text-transform: uppercase;" class="modal-title text-center" id="myModalLabel">Nueva Persona</h4>
-      </div>
-      <div id="error"></div>
-      <form method="post" enctype="multipart/form-data" name="newCom" class="panel-body formborrar" id="nuevaPersona">
+      </div> <!-- FIN MODAL HEADER -->
+      <form method="post" name="registrarpersona" class="panel-body" id="nuevaPersonaform">
         <div class="modal-body">
           <div class="row">
             <div class="col-md-6 col-lg-6">
               <div class="input-group form-group">
                 <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
                 <select class="form-control" name="tipodoc" id="tipodoc">
-                  <option>Seleccione Tipo Doc.: </option>
-                  <option>CC</option>
-                  <option>Pasaporte</option>
+                  <option>Seleccione: </option>
+                  <?php
+                    $combotipodoc = TipoDocControlador::ctrmostrartipodoc(null, null);
+                    foreach ($combotipodoc as $key => $value) {
+                      echo '<option value="'.$value["Id_tp"].'">'.$value["Descripcion"].'</option>';
+                    }
+                   ?>
                 </select>
               </div>
               <span id="help-blockper"></span>
@@ -98,45 +102,35 @@
                 <input type="text" id="direccion" name="direccion" placeholder="Ingrese Direccion" class="form-control">
               </div>
             </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-success borrarcampos" data-size="xs" data-dismiss="modal">Cerrar</button>
-      <input name="acc" type="hidden" id="acc" value="c" />
-      <button type="button" class="btn btn-primary" data-color="blue" data-style="zoom-out"  id="crearPersona" style="font-size:14px; padding: 6px 12px;">Crear</button>
-    </div>
-  </form>
-</div>
-</div>
-</div>
+          </div><!-- FIN ROW -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success borrarcampos" data-size="xs" data-dismiss="modal">Cerrar</button>
+            <input name="acc" type="hidden" id="acc" value="c" />
+            <button type="button" class="btn btn-primary" data-color="blue" data-style="zoom-out"  id="crearPersona" style="font-size:14px; padding: 6px 12px;">Crear</button>
+          </div><!-- FIN MODAL FOOTER  -->
+        </div><!-- FIN MODAL BODY -->
+      </form>
+    </div><!-- FIN MODAL CONTENT -->
+  </div><!-- FIN MODAL DIALOG -->
+</div><!-- FIN MODAL -->
 
 
 
 <!--=====================================================
-                      EDITAR PERSONA
+                      EDITAR  PERSONA
   ===================================================-->
-  <div class="modal fade" id="editarPersona" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="editarpersonamodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h4 style="font-size: 20px; text-transform: uppercase;" class="modal-title text-center" id="myModalLabel">Editar Persona</h4>
-      </div>
-      <div id="error"></div>
-      <form method="post" enctype="multipart/form-data" name="newCom" class="panel-body formborrar" id="nuevaPersona">
+      </div> <!-- FIN MODAL HEADER -->
+      <form method="post"  name="editarpersona" class="panel-body" id="editarPersonaform">
         <div class="modal-body">
           <div class="row">
             <div class="col-md-6 col-lg-6">
-              <div class="input-group form-group">
-                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
-                <select class="form-control" name="tipodoceditar" id="tipodoceditar" readonly>
-                  <option>Seleccione Tipo Doc.: </option>
-                  <option>CC</option>
-                  <option>Pasaporte</option>
-                </select>
-              </div>
-              <span id="help-blockper"></span>
-            </div>
-            <div class="col-md-6 col-lg-6">
-              <div class="input-group form-group">
+              <div class="input-group form-group" id="errorcrearper">
                 <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
                 <input type="text" id="cedulaeditar" name="cedulaeditar" placeholder="Ingrese Cedula" class="form-control" readonly>
               </div>
@@ -172,13 +166,15 @@
                 <input type="text" id="direccioneditar" name="direccioneditar" placeholder="Ingrese Direccion" class="form-control">
               </div>
             </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-success borrarcampos" data-size="xs" data-dismiss="modal">Cerrar</button>
-      <input name="acc" type="hidden" id="acc" value="c" />
-      <button type="button" class="btn btn-primary" data-color="blue" data-style="zoom-out"  id="crearPersona" style="font-size:14px; padding: 6px 12px;">Crear</button>
-    </div>
-  </form>
-</div>
-</div>
-</div>
+          </div><!-- FIN ROW -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-size="xs" data-dismiss="modal">Cerrar</button>
+            <input name="acc" type="hidden" id="acc" value="upd" />
+            <button type="button" class="btn btn-primary" data-color="blue" data-style="zoom-out"  id="editarPersona" style="font-size:14px; padding: 6px 12px;">Crear</button>
+          </div><!-- FIN MODAL FOOTER  -->
+        </div><!-- FIN MODAL BODY -->
+      </form>
+    </div><!-- FIN MODAL CONTENT -->
+  </div><!-- FIN MODAL DIALOG -->
+</div><!-- FIN MODAL -->
+

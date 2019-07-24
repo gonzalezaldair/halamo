@@ -6,9 +6,39 @@
 })*/
 $(document).ready(function() {
   /*=============================
-cargar la tabla de aritculos ma
+cargar la tabla de usuarios
 =============================*/
-  var objetoDataTables_personal = $('#tablausuario').DataTable({
+tablausuario();
+
+
+  /*=============================
+CREAR USUARIO
+=============================*/
+
+crearusuario();
+
+  /*=============================
+EDITAR USUARIO
+=============================*/
+
+
+traerdatoseditarusuario();
+
+editarusuario();
+
+  /*=============================
+ELIMINAR USUARIO
+=============================*/
+
+
+eliminarusuario();
+
+});
+
+
+
+var tablausuario =function(){
+  $('#tablausuario').DataTable({
     "ajax": "ajax/usuario.ajax.php",
     "deferRender": true,
     "retrieve": true,
@@ -39,5 +69,94 @@ cargar la tabla de aritculos ma
       }
     }
   });
+}
 
-});
+var crearusuario = function()
+{
+  $("#crearusuario").on("click", function(){
+    var formenuevausuario = $("#nuevausuarioform").serialize();
+    $.ajax({
+        method: "POST",
+        url: "ajax/usuario.ajax.php",
+        data: formenuevapersona
+      }).done(function(data) {
+        console.log("data", data);
+        if (data)
+        {
+          tablapersona();
+          alert("exitos");
+          $("#Nuevousuario").modal("hide");
+        }else{
+          alert("error");
+        }
+      });
+  });
+}
+
+
+
+var traerdatoseditarusuario = function ()
+{
+  $("#tablausuario").on("click", "button.upd", function(){
+    idusuario = $(this).attr("id_usuario");
+    $.ajax({
+        method: "POST",
+        url: "ajax/usuario.ajax.php",
+        data: {"acc": "traer", "idusuario": idusuario}
+      }).done(function(data) {
+        var json = jQuery.parseJSON(data);
+        $('#correoeditar').val(json.usuario);
+        $('#contrasenaeditar').val(json.contrasena);
+        $('#roleditar').val(json.ROL);
+        $('#personaeditar').val(json.PERSONA);
+        $("#editarusuariomodal").modal("show");
+      });
+  });
+}
+
+
+var editarusuario = function()
+{
+  $("#editarusuario").on("click", function(){
+    var formeditar = $("#editarusuarioform").serialize();
+    $.ajax({
+        method: "POST",
+        url: "ajax/usuario.ajax.php",
+        data: formeditar
+      }).done(function(data) {
+        console.log("data", data);
+        if (data)
+        {
+          tablapersona();
+          alert("exitos");
+        }else{
+          alert("error");
+        }
+        $("#editarusuariomodal").modal("hide");
+      });
+  });
+}
+
+
+
+var eliminarusuario = function ()
+{
+  $("#tablausuario").on("click", "button.del", function(){
+    idusuario = $(this).attr("id_usuario");
+    $.ajax({
+        method: "POST",
+        url: "ajax/usuario.ajax.php",
+        data: {"acc": "del", "idusuario": idusuario}
+      }).done(function(data) {
+        console.log("data", data);
+        if (data)
+        {
+          console.log("respuesta true del servidor", data);
+          tablapersona();
+          alert("exitos");
+        }else{
+          alert("error");
+        }
+      });
+  });
+}

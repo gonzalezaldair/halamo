@@ -28,4 +28,65 @@ class PersonaModelo{
 
 		$stmt = null;
 	}
+
+	public function mdlcrearpersona($tabla, $datosmodelo)
+	{
+		$stmt = Conexion::conectar()->prepare("INSERT INTO persona(Num_Documento, Nombre, Apellido, Direccion, Correo, TIPO_DOC, Movil) VALUES (:cedula, :nombre, :apellido, :direccion, :correo, :tipodoc, :movil)");
+		$stmt -> bindParam(":cedula", $datosmodelo["cedula"], PDO::PARAM_STR);
+		$stmt -> bindParam(":nombre", $datosmodelo["nombre"], PDO::PARAM_STR);
+		$stmt -> bindParam(":apellido", $datosmodelo["apellido"], PDO::PARAM_STR);
+		$stmt -> bindParam(":direccion", $datosmodelo["direccion"], PDO::PARAM_STR);
+		$stmt -> bindParam(":correo", $datosmodelo["correo"], PDO::PARAM_STR);
+		$stmt -> bindParam(":tipodoc", $datosmodelo["tipodoc"], PDO::PARAM_INT);
+		$stmt -> bindParam(":movil", $datosmodelo["movil"], PDO::PARAM_INT);
+		if($stmt->execute())
+		{
+			return true;
+		}
+		else
+		{
+			$err = $stmt->errorInfo();
+			return $err[2];
+		}
+		$stmt -> close();
+		$stmt = null;
+	}
+	public function mdlactualizarpersona($tabla, $datosmodelo)
+	{
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET Nombre= :nombre,Apellido=:apellido,Direccion=:direccion,Movil=:movil WHERE Num_Documento = :cedula");
+		$stmt -> bindParam(":nombre", $datosmodelo["nombre"], PDO::PARAM_STR);
+		$stmt -> bindParam(":apellido", $datosmodelo["apellido"], PDO::PARAM_STR);
+		$stmt -> bindParam(":direccion", $datosmodelo["direccion"], PDO::PARAM_STR);
+		$stmt -> bindParam(":movil", $datosmodelo["movil"], PDO::PARAM_INT);
+		$stmt -> bindParam(":cedula", $datosmodelo["cedula"], PDO::PARAM_STR);
+		if($stmt->execute())
+		{
+			return true;
+		}
+		else
+		{
+			$err = $stmt->errorInfo();
+			return $err[2];
+		}
+		$stmt -> close();
+		$stmt = null;
+	}
+
+
+	public static function mdlaeliminarpersona($tabla, $valor)
+	{
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE Num_Documento = :cedula");
+		$stmt -> bindParam(":cedula", $valor, PDO::PARAM_STR);
+		if($stmt->execute())
+		{
+			return true;
+		}
+		else
+		{
+			$err = $stmt->errorInfo();
+			return $err[2];
+		}
+		$stmt -> close();
+		$stmt = null;
+	}
 }

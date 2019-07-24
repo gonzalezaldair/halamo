@@ -1,9 +1,9 @@
-$.ajax({
+/*$.ajax({
 	url: "ajax/tipohab.ajax.php",
 	success:function(respuesta){
 		console.log("respuesta", respuesta);
 	}
-})
+})*/
 $(document).ready(function() {
   /*=============================
 cargar la tabla de aritculos ma
