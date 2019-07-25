@@ -112,7 +112,6 @@ var traerdatoseditarpersona = function ()
         $('#nombreeditar').val(json.Nombre);
         $('#apellidoeditar').val(json.Apellido);
         $('#telefonoeditar').val(json.Movil);
-        $('#correoeditar').val(json.Correo);
         $('#direccioneditar').val(json.Direccion);
         $("#editarpersonamodal").modal("show");
       });

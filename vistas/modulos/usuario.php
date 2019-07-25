@@ -52,20 +52,20 @@
           <div class="row">
             <div class="col-md-6 col-lg-6">
               <div class="input-group form-group" id="errorcrearper">
-                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                 <input type="text" id="correo" name="correo" placeholder="Ingrese correo" class="form-control">
               </div>
               <span id="help-blockper"></span>
             </div>
             <div class="col-md-6 col-lg-6">
               <div class="input-group form-group">
-                <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
+                <span class="input-group-addon"><i class="fa fa-text-width"></i></span>
                 <input type="password" id="contrasena" name="contrasena" placeholder="Ingrese Contraseña" class="form-control">
               </div>
             </div>
             <div class="col-md-6 col-lg-6">
               <div class="input-group form-group">
-                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                <span class="input-group-addon"><i class="fa fa-group"></i></span>
                 <select class="form-control" name="rol" id="rol">
                   <option>Seleccione: </option>
                   <?php
@@ -80,7 +80,7 @@
             </div>
             <div class="col-md-6 col-lg-6">
               <div class="input-group form-group">
-                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                <span class="input-group-addon"><i class="fa fa-address-card"></i></span>
                 <select class="form-control" name="persona" id="persona">
                   <option>Seleccione: </option>
                   <?php
@@ -123,20 +123,20 @@
           <div class="row">
             <div class="col-md-6 col-lg-6">
               <div class="input-group form-group" id="errorcrearper">
-                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                 <input type="text" id="correoeditar" name="correoeditar" placeholder="Ingrese correo" class="form-control" readonly>
               </div>
               <span id="help-blockper"></span>
             </div>
             <div class="col-md-6 col-lg-6">
               <div class="input-group form-group">
-                <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
+                <span class="input-group-addon"><i class="fa fa-text-width"></i></span>
                 <input type="password" id="contrasenaeditar" name="contrasenaeditar" placeholder="Ingrese Nombre" class="form-control">
               </div>
             </div>
             <div class="col-md-6 col-lg-6">
               <div class="input-group form-group">
-                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                <span class="input-group-addon"><i class="fa fa-group"></i></span>
                 <select class="form-control" name="roleditar" id="roleditar">
                   <option>Seleccione: </option>
                   <?php
@@ -151,7 +151,7 @@
             </div>
             <div class="col-md-6 col-lg-6">
               <div class="input-group form-group">
-                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                <span class="input-group-addon"><i class="fa fa-address-card"></i></span>
                 <select class="form-control" name="personaeditar" id="personaeditar" readonly>
                   <option>Seleccione: </option>
                   <?php

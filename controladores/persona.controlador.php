@@ -10,7 +10,7 @@ class PersonaControlador{
 	public static function ctrcrearpersona()
 	{
 		if (isset($_POST["cedula"])) {
-			$datoscontrolador = array('cedula' => $_POST["cedula"], 'nombre' => $_POST["nombre"], 'apellido' => $_POST["apellido"], 'movil' => $_POST["telefono"], 'direccion' => $_POST["direccion"], 'correo' => $_POST["correo"], 'tipodoc' => $_POST["tipodoc"]);
+			$datoscontrolador = array('cedula' => $_POST["cedula"], 'nombre' => $_POST["nombre"], 'apellido' => $_POST["apellido"], 'movil' => $_POST["telefono"], 'direccion' => $_POST["direccion"], 'tipodoc' => $_POST["tipodoc"]);
 			$respuestapercrear = PersonaModelo::mdlcrearpersona("persona", $datoscontrolador);
 			return $respuestapercrear;
 		}

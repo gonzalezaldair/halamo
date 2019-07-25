@@ -22,7 +22,6 @@
                     <th>Cedula</th>
                     <th>Nombres</th>
                     <th>Direccion</th>
-                    <th>Correo</th>
                     <th>Tipo Documento</th>
                     <th>Telefono</th>
                     <th>Acciones</th>
@@ -67,20 +66,20 @@
             </div>
             <div class="col-md-6 col-lg-6">
               <div class="input-group form-group" id="errorcrearper">
-                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                <span class="input-group-addon"><i class="fa fa-id-card"></i></span>
                 <input type="text" id="cedula" name="cedula" placeholder="Ingrese Cedula" class="form-control">
               </div>
               <span id="help-blockper"></span>
             </div>
             <div class="col-md-6 col-lg-6">
               <div class="input-group form-group">
-                <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
+                <span class="input-group-addon"><i class="fa fa-text-width"></i></span>
                 <input type="text" id="nombre" name="nombre" placeholder="Ingrese Nombre" class="form-control">
               </div>
             </div>
             <div class="col-md-6 col-lg-6">
               <div class="input-group form-group">
-                <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
+                <span class="input-group-addon"><i class="fa fa-text-width"></i></span>
                 <input type="text" id="nombre" name="apellido" placeholder="Ingrese Apellido" class="form-control">
               </div>
             </div>
@@ -90,12 +89,13 @@
                 <input type="text" id="telefono" name="telefono" placeholder="Ingrese Movil" class="form-control">
               </div>
             </div>
+            <!--
             <div class="col-md-6 col-lg-6">
               <div class="input-group form-group">
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                 <input type="email" id="correo" name="correo" placeholder="Ingrese Correo" class="form-control">
               </div>
-            </div>
+            </div>-->
             <div class="col-md-6 col-lg-6">
               <div class="input-group form-group">
                 <span class="input-group-addon"><i class="fa fa-home"></i></span>
@@ -138,13 +138,13 @@
             </div>
             <div class="col-md-6 col-lg-6">
               <div class="input-group form-group">
-                <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
+                <span class="input-group-addon"><i class="fa fa-text-width"></i></span>
                 <input type="text" id="nombreeditar" name="nombreeditar" placeholder="Ingrese Nombre" class="form-control">
               </div>
             </div>
             <div class="col-md-6 col-lg-6">
               <div class="input-group form-group">
-                <span class="input-group-addon"><i class="fa fa-user-circle-o"></i></span>
+                <span class="input-group-addon"><i class="fa fa-text-width"></i></span>
                 <input type="text" id="apellidoeditar" name="apellidoeditar" placeholder="Ingrese Apellido" class="form-control">
               </div>
             </div>
@@ -154,13 +154,14 @@
                 <input type="text" id="telefonoeditar" name="telefonoeditar" placeholder="Ingrese Movil" class="form-control">
               </div>
             </div>
+            <!--
             <div class="col-md-6 col-lg-6">
               <div class="input-group form-group">
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                 <input type="email" id="correoeditar" name="correoeditar" placeholder="Ingrese Correo" class="form-control">
               </div>
-            </div>
-            <div class="col-md-6 col-lg-6">
+            </div>-->
+            <div class="col-md-12 col-lg-12">
               <div class="input-group form-group">
                 <span class="input-group-addon"><i class="fa fa-home"></i></span>
                 <input type="text" id="direccioneditar" name="direccioneditar" placeholder="Ingrese Direccion" class="form-control">

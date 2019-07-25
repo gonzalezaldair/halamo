@@ -35,8 +35,9 @@
           </div>
           <div class="box-body">
             <form method="post" id="formrolfuncionalidad">
+              <h3 class="text-center"> Rol - Funcionalidad</h3>
               <div class="input-group form-group">
-                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                <span class="input-group-addon"><i class="fa fa-group"></i></span>
                 <select class="form-control" name="rol" id="rol">
                   <option>Seleccione: </option>
                   <?php
@@ -48,8 +49,8 @@
                 </select>
               </div>
               <div class="input-group form-group">
-                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
-                <select class="form-control multipleselect" multiple="multiple" name="funcionalidad" id="funcionalidad">
+                <span class="input-group-addon"><i class="fa fa-th-list"></i></span>
+                <select class="form-control multipleselect" multiple="multiple" name="funcionalidad" id="funcionalidad" style="width: 100%;">
                   <?php
                     $comborol = FuncionalidadControlador::ctrmostrarfuncionalidad(null, null);
                     foreach ($comborol as $key => $value) {
@@ -85,7 +86,7 @@
           <div class="row">
             <div class="col-md-12 col-lg-12">
               <div class="input-group form-group" id="errorcrearper">
-                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                <span class="input-group-addon"><i class="fa fa-text-height"></i></span>
                 <input type="text" id="nombre" name="nombre" placeholder="Ingrese Nombre" class="form-control">
               </div>
               <span id="help-blockper"></span>
@@ -132,7 +133,7 @@
             </div>
             <div class="col-md-12 col-lg-12">
               <div class="input-group form-group">
-                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                <span class="input-group-addon"><i class="fa fa-text-height"></i></span>
                 <input type="text" id="nombreeditar" name="nombreeditar" placeholder="Ingrese Nombre" class="form-control">
               </div>
               <span id="help-blockper"></span>

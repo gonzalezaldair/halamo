@@ -12,6 +12,7 @@ require_once 'modelos/reserva.modelo.php';
 require_once 'modelos/usuario.modelo.php';
 require_once 'modelos/tipodoc.modelo.php';
 require_once 'modelos/tipohab.modelo.php';
+require_once 'modelos/cliente.modelo.php';
 
 
 
@@ -26,6 +27,7 @@ require_once 'controladores/habitacion.controlador.php';
 require_once 'controladores/usuario.controlador.php';
 require_once 'controladores/tipodoc.controlador.php';
 require_once 'controladores/tipohab.controlador.php';
+require_once 'controladores/cliente.controlador.php';
 
 
 //EXTENSIONES

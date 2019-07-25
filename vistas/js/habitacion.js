@@ -8,7 +8,41 @@ $(document).ready(function() {
   /*=============================
 cargar la tabla de aritculos ma
 =============================*/
-  var objetoDataTables_personal = $('#tablahabitacion').DataTable({
+  tablahabitacion();
+
+ /*=============================
+CREAR HABITACION
+=============================*/
+
+  crearhabitacion();
+
+
+   /*=============================
+editar HABITACION
+=============================*/
+
+
+traerdatoshabitacion();
+
+editarhabitacion();
+
+
+
+/*=============================
+eliminar HABITACION
+=============================*/
+
+
+eliminarhabitacion();
+
+});
+
+
+
+
+var tablahabitacion = function()
+{
+  $('#tablahabitacion').DataTable({
     "ajax": "ajax/habitacion.ajax.php",
     "deferRender": true,
     "retrieve": true,
@@ -39,5 +73,86 @@ cargar la tabla de aritculos ma
       }
     }
   });
+}
 
-});
+var crearhabitacion = function()
+{
+  $("#crearhabitacion").on("click", function(){
+    formdatahabitacion = $("#nuevahabitacionform").serialize();
+    $.ajax({
+        method: "POST",
+        url: "ajax/habitacion.ajax.php",
+        data: formdatahabitacion
+      }).done(function(data) {
+        console.log("data", data);
+        if (data = "ok")
+        {
+          alert("exitos");
+        }else{
+          alert("error");
+        }
+        $("#Nuevahabitacionmodal").modal("hide");
+      });
+  });
+}
+
+
+var traerdatoshabitacion = function()
+{
+  $("#tablahabitacion").on("click", "button.upd", function(){
+    idhabitacion = $(this).attr('id_habitacion');
+    $.ajax({
+        method: "POST",
+        url: "ajax/habitacion.ajax.php",
+        data: {"acc": "traer", "idhabitacion": idhabitacion}
+      }).done(function(data) {
+        var json = jQuery.parseJSON(data);
+        $('#codigoeditar').val(json.Codigo);
+        $('#numerohabitacioneditar').val(json.Num_Habitacion);
+        $('#tipohabeditar').val(json.TIPO_HABITACION);
+        $("#editarhabitacionmodal").modal("show");
+      });
+  });
+}
+
+var editarhabitacion = function()
+{
+  $("#editarhabitacion").on("click", function(){
+    formdatahabitacion = $("#editarhabitacionform").serialize();
+    $.ajax({
+        method: "POST",
+        url: "ajax/habitacion.ajax.php",
+        data: formdatahabitacion
+      }).done(function(data) {
+        console.log("data", data);
+        if (data = "ok")
+        {
+          alert("exitos");
+        }else{
+          alert("error");
+        }
+        $("#editarhabitacionmodal").modal("hide");
+      });
+  });
+}
+
+
+var eliminarhabitacion = function()
+{
+  $("#tablahabitacion").on("click", "button.del", function(){
+    idhabitacion = $(this).attr('id_habitacion');
+    $.ajax({
+        method: "POST",
+        url: "ajax/habitacion.ajax.php",
+        data: {"acc": "del", "idhabitacion": idhabitacion}
+      }).done(function(data) {
+        console.log("data", data);
+        if (data = "ok")
+        {
+          alert("exitos");
+        }else{
+          alert("error");
+        }
+      });
+  });
+}

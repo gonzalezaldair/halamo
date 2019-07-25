@@ -17,13 +17,20 @@ class RolControlador{
 
 	public static function ctrregistrarrolfuncionalidad()
 	{
+		$respuesta = "";
 		if (isset($_POST["rol"])) {
 			$tabla = "rol_funcionalidad";
 			$functionalidad = explode(",",$_POST["funcionalidad"]);
-			/*for ($i=0; $i < count($functionalidad); $i++) {
-				$datoscontrolador  = array('rol' => $_POST["rol"], 'funcionalidad' => $functionalidad[i]);
-				$respuestarol = RolModelo::mdlRolfuncionalidad($tabla, $datoscontrolador);
-			}*/
+			for ($i=0; $i < count($functionalidad); $i++) {
+				$datoscontrolador  = array('rol' => $_POST["rol"], 'funcionalidad' => $functionalidad[$i]);
+				$respuestarol = RolModelo::mdlcrearolfuncionalidad($tabla, $datoscontrolador);
+				if ($respuestarol != "ok") {
+					$respuesta = $respuestarol;
+				}else{
+					$respuesta = "ok";
+				}
+			}
+			return $respuesta;
 			//$datoscontrolador  = array('rol' => $_POST["rol"], 'funcionalidad' => $_POST);
 			//$respuestarol = RolModelo::mdlRolfuncionalidad($tabla);
 			//return $respuestarol;

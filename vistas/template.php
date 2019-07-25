@@ -179,6 +179,7 @@ else
 	<script src="vistas/js/rol.js"></script>
 	<script src="vistas/js/habitacion.js"></script>
 	<script src="vistas/js/tipohab.js"></script>
+	<script src="vistas/js/reserva.js"></script>
 
 </body>
 </html>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-07-2019 a las 21:14:33
+-- Tiempo de generación: 25-07-2019 a las 05:17:30
 -- Versión del servidor: 10.1.37-MariaDB
 -- Versión de PHP: 7.2.13
 
@@ -34,6 +34,15 @@ CREATE TABLE `cliente` (
   `TIPO_CLIENTE` bigint(20) NOT NULL,
   `TIPO_DESCUENTO` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`PERSONA`, `Id_Cli`, `TIPO_CLIENTE`, `TIPO_DESCUENTO`) VALUES
+('13500750', 1, 2, 4),
+('60348418', 2, 1, 3),
+('1090494504', 3, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -73,7 +82,6 @@ CREATE TABLE `habitacion` (
   `Codigo` bigint(20) NOT NULL,
   `Disponible` varchar(1) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Y',
   `Num_Habitacion` int(11) NOT NULL,
-  `Precio` float NOT NULL,
   `TIPO_HABITACION` bigint(20) NOT NULL,
   `Imagen` text COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -82,8 +90,10 @@ CREATE TABLE `habitacion` (
 -- Volcado de datos para la tabla `habitacion`
 --
 
-INSERT INTO `habitacion` (`Codigo`, `Disponible`, `Num_Habitacion`, `Precio`, `TIPO_HABITACION`, `Imagen`) VALUES
-(1, 'Y', 1, 20000, 1, '');
+INSERT INTO `habitacion` (`Codigo`, `Disponible`, `Num_Habitacion`, `TIPO_HABITACION`, `Imagen`) VALUES
+(1, 'Y', 1, 1, ''),
+(2, 'Y', 2, 3, ''),
+(3, 'Y', 3, 2, '');
 
 -- --------------------------------------------------------
 
@@ -129,7 +139,6 @@ CREATE TABLE `persona` (
   `Nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Apellido` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Direccion` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `Correo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `TIPO_DOC` bigint(20) NOT NULL,
   `Movil` int(11) NOT NULL,
   `Telefono` int(11) NOT NULL
@@ -139,10 +148,13 @@ CREATE TABLE `persona` (
 -- Volcado de datos para la tabla `persona`
 --
 
-INSERT INTO `persona` (`Num_Documento`, `Nombre`, `Apellido`, `Direccion`, `Correo`, `TIPO_DOC`, `Movil`, `Telefono`) VALUES
-('1', 'Recepcionista', 'rr', 'cc', 'recepcionista@gmail.com', 1, 0, 0),
-('1090472103', 'ALDAIR', 'GONZALEZ', 'CUCUTA', 'aldair@gmail.com', 1, 12121, 2121),
-('2', 'Cliente', 'cc', 'ccccc', 'cliente@gmail.com', 1, 0, 0);
+INSERT INTO `persona` (`Num_Documento`, `Nombre`, `Apellido`, `Direccion`, `TIPO_DOC`, `Movil`, `Telefono`) VALUES
+('1', 'Recepcionista', 'rr', 'cc', 1, 1212121, 0),
+('1090472103', 'ALDAIR', 'GONZALEZ', 'CUCUTA', 1, 12121, 2121),
+('1090494504', 'YURLEY', 'SUAREZ', 'CUCUTA', 1, 12121, 0),
+('13500750', 'GERMAN', 'GONZALEZ', 'CUCUTA', 1, 12332, 0),
+('2', 'Cliente', 'cc', 'ccccc', 1, 121212121, 0),
+('60348418', 'JACQUELINE', 'AMAYA', 'CUCUTA', 1, 12132, 0);
 
 -- --------------------------------------------------------
 
@@ -159,6 +171,14 @@ CREATE TABLE `reservas` (
   `CLIENTE` bigint(20) NOT NULL,
   `HABITACION` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `reservas`
+--
+
+INSERT INTO `reservas` (`Codigo`, `Fecha_Ingreso`, `Fecha_Salida`, `DescuentoReserva`, `Total`, `CLIENTE`, `HABITACION`) VALUES
+(1, '2019-07-21', '2019-07-24', '5', 50000, 1, 1),
+(2, '2019-07-25', '2019-07-27', '6', 34555, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -205,11 +225,9 @@ INSERT INTO `rol_funcionalidad` (`ROL`, `FUNCIONALIDAD`) VALUES
 (1, 6),
 (1, 7),
 (1, 8),
-(2, 1),
 (2, 2),
-(2, 3),
-(2, 4),
-(3, 2);
+(3, 2),
+(3, 7);
 
 -- --------------------------------------------------------
 
@@ -238,8 +256,19 @@ INSERT INTO `tipo_cliente` (`Id_tc`, `Descripcion`) VALUES
 
 CREATE TABLE `tipo_descuento` (
   `Id_tdes` bigint(20) NOT NULL,
+  `Descuento` int(2) NOT NULL,
   `Descripcion` text COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tipo_descuento`
+--
+
+INSERT INTO `tipo_descuento` (`Id_tdes`, `Descuento`, `Descripcion`) VALUES
+(1, 19, 'Sin iva'),
+(2, 10, 'Premiun'),
+(3, 5, 'Normal'),
+(4, 0, 'Ninguno');
 
 -- --------------------------------------------------------
 
@@ -269,17 +298,18 @@ INSERT INTO `tipo_documento` (`Id_tp`, `Descripcion`) VALUES
 
 CREATE TABLE `tipo_habitacion` (
   `Id_th` bigint(20) NOT NULL,
-  `Descripcion` text COLLATE utf8_spanish_ci NOT NULL
+  `Descripcion` text COLLATE utf8_spanish_ci NOT NULL,
+  `Precio` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `tipo_habitacion`
 --
 
-INSERT INTO `tipo_habitacion` (`Id_th`, `Descripcion`) VALUES
-(1, 'Simple'),
-(2, 'Doble'),
-(3, 'Matrimonial');
+INSERT INTO `tipo_habitacion` (`Id_th`, `Descripcion`, `Precio`) VALUES
+(1, 'Simple', 20000),
+(2, 'Doble', 35000),
+(3, 'Matrimonial', 50000);
 
 -- --------------------------------------------------------
 
@@ -303,8 +333,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`usuario`, `contrasena`, `ROL`, `Agregado`, `Log`, `Activo`, `PERSONA`) VALUES
 ('aldair@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auQstvAs9a/DaWE6VrBHcKoyValeASYee', 1, '2019-07-19', '', 'Y', '1090472103'),
-('cliente@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auQstvAs9a/DaWE6VrBHcKoyValeASYee', 3, '2019-07-19', '', 'Y', '2'),
-('recepcionista@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auQstvAs9a/DaWE6VrBHcKoyValeASYee', 2, '2019-07-19', '', 'Y', '1');
+('cliente@gmail.com', '$2a$07$asxx54ahjppf45sd87a5auQstvAs9a/DaWE6VrBHcKoyValeASYee', 3, '2019-07-24', '', 'Y', '2');
 
 --
 -- Índices para tablas volcadas
@@ -355,7 +384,6 @@ ALTER TABLE `permisos`
 --
 ALTER TABLE `persona`
   ADD PRIMARY KEY (`Num_Documento`),
-  ADD UNIQUE KEY `Correo` (`Correo`),
   ADD KEY `TIPO_DOC` (`TIPO_DOC`);
 
 --
@@ -426,7 +454,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `Id_Cli` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Cli` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `funcionalidades`
@@ -438,7 +466,7 @@ ALTER TABLE `funcionalidades`
 -- AUTO_INCREMENT de la tabla `habitacion`
 --
 ALTER TABLE `habitacion`
-  MODIFY `Codigo` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Codigo` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `permisos`
@@ -450,7 +478,7 @@ ALTER TABLE `permisos`
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `Codigo` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Codigo` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -468,7 +496,7 @@ ALTER TABLE `tipo_cliente`
 -- AUTO_INCREMENT de la tabla `tipo_descuento`
 --
 ALTER TABLE `tipo_descuento`
-  MODIFY `Id_tdes` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_tdes` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_documento`
@@ -480,7 +508,7 @@ ALTER TABLE `tipo_documento`
 -- AUTO_INCREMENT de la tabla `tipo_habitacion`
 --
 ALTER TABLE `tipo_habitacion`
-  MODIFY `Id_th` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id_th` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas

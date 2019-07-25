@@ -55,6 +55,25 @@ class RolModelo{
 	}
 
 
+	public function mdlcrearolfuncionalidad($tabla, $datosmodelo)
+	{
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (ROL, FUNCIONALIDAD) VALUES (:rol, :funcionalidad)");
+		$stmt -> bindParam(":rol", $datosmodelo["rol"], PDO::PARAM_INT);
+		$stmt -> bindParam(":funcionalidad", $datosmodelo["funcionalidad"], PDO::PARAM_INT);
+		if($stmt->execute())
+		{
+			return "ok";
+		}
+		else
+		{
+			$err = $stmt->errorInfo();
+			return $err[2];
+		}
+		$stmt -> close();
+		$stmt = null;
+	}
+
+
 
 	public function mdlcrearrol($tabla, $datosmodelo)
 	{

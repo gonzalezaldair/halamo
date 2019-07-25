@@ -31,12 +31,11 @@ class PersonaModelo{
 
 	public function mdlcrearpersona($tabla, $datosmodelo)
 	{
-		$stmt = Conexion::conectar()->prepare("INSERT INTO persona(Num_Documento, Nombre, Apellido, Direccion, Correo, TIPO_DOC, Movil) VALUES (:cedula, :nombre, :apellido, :direccion, :correo, :tipodoc, :movil)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(Num_Documento, Nombre, Apellido, Direccion, TIPO_DOC, Movil) VALUES (:cedula, :nombre, :apellido, :direccion, :tipodoc, :movil)");
 		$stmt -> bindParam(":cedula", $datosmodelo["cedula"], PDO::PARAM_STR);
 		$stmt -> bindParam(":nombre", $datosmodelo["nombre"], PDO::PARAM_STR);
 		$stmt -> bindParam(":apellido", $datosmodelo["apellido"], PDO::PARAM_STR);
 		$stmt -> bindParam(":direccion", $datosmodelo["direccion"], PDO::PARAM_STR);
-		$stmt -> bindParam(":correo", $datosmodelo["correo"], PDO::PARAM_STR);
 		$stmt -> bindParam(":tipodoc", $datosmodelo["tipodoc"], PDO::PARAM_INT);
 		$stmt -> bindParam(":movil", $datosmodelo["movil"], PDO::PARAM_INT);
 		if($stmt->execute())

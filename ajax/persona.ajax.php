@@ -22,7 +22,6 @@ class tablaPersona{
 						"'.$persona[$i]["Num_Documento"].'",
 						"'.$nombre.'",
 						"'.$persona[$i]["Direccion"].'",
-						"'.$persona[$i]["Correo"].'",
 						"'.$tipodoc["Descripcion"].'",
 						"'.$persona[$i]["Movil"].'",
 						"'.$botones.'"
