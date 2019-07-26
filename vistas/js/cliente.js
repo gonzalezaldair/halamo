@@ -1,48 +1,47 @@
 /*$.ajax({
-	url: "ajax/tipocliente.ajax.php",
-	success:function(respuesta){
-		console.log("respuesta", respuesta);
-	}
+  url: "ajax/tipocliente.ajax.php",
+  success:function(respuesta){
+    console.log("respuesta", respuesta);
+  }
 })*/
 $(document).ready(function() {
   /*=============================
 cargar la tabla de aritculos ma
 =============================*/
 
-tablacliente();
+  tablacliente();
 
 
   /*=============================
 CREAR ROL
 =============================*/
 
-crearcliente();
+  crearcliente();
 
-/*=============================
-EDITAR ROL
-=============================*/
+  /*=============================
+  EDITAR ROL
+  =============================*/
 
-traerdatoseditarcliente();
-
-
-editarcliente();
+  traerdatoseditarcliente();
 
 
-/*=============================
-ELIMINAR ROL
-=============================*/
+  editarcliente();
 
 
-eliminarcliente();
+  /*=============================
+  ELIMINAR ROL
+  =============================*/
+
+
+  eliminarcliente();
 
 
 
 });
 
 
-var tablacliente = function ()
-  {
-    $('#tablaclientes').DataTable({
+var tablacliente = function() {
+  $('#tablaclientes').DataTable({
     "ajax": "ajax/tipocliente.ajax.php",
     "deferRender": true,
     "retrieve": true,
@@ -73,93 +72,119 @@ var tablacliente = function ()
       }
     }
   });
-  }
+}
 
 
 
-  var crearcliente = function()
-{
-  $("#crearcliente").on("click", function(){
+var crearcliente = function() {
+  $("#crearcliente").on("click", function() {
     var formenuevorol = $("#nuevoclienteform").serialize();
     $.ajax({
-        method: "POST",
-        url: "ajax/tipocliente.ajax.php",
-        data: formenuevorol
-      }).done(function(data) {
-        console.log("data", data);
-        if (data = "ok")
-        {
-          alert("exitos");
-          $("#Nuevoclientemodal").modal("hide");
-        }else{
-          alert("error");
-        }
-      });
+      method: "POST",
+      url: "ajax/tipocliente.ajax.php",
+      data: formenuevorol
+    }).done(function(data) {
+      console.log("data", data);
+      if (data = "ok") {
+        swal({
+          title: "Exitos !",
+          text: "Registro Exitoso",
+          type: "success"
+        });
+        $("#Nuevoclientemodal").modal("hide");
+      } else {
+        swal({
+          title: "Advertencia !",
+          text: "Hubo un error al ejecutar la accion",
+          type: "warning"
+        });
+      }
+    });
   });
 }
 
 
 
-var traerdatoseditarcliente = function ()
-{
-  $("#tablaclientes").on("click", "button.upd", function(){
+var traerdatoseditarcliente = function() {
+  $("#tablaclientes").on("click", "button.upd", function() {
     idcliente = $(this).attr("id_cliente");
     $.ajax({
-        method: "POST",
-        url: "ajax/tipocliente.ajax.php",
-        data: {"acc": "traer", "idcliente": idcliente}
-      }).done(function(data) {
-        var json = jQuery.parseJSON(data);
-        $('#codigoeditar').val(json.Id_tc);
-        $('#nombreeditar').val(json.Descripcion);
-        $('#descuentoeditar').val(json.Descuento);
-        $("#editarclientemodal").modal("show");
-      });
+      method: "POST",
+      url: "ajax/tipocliente.ajax.php",
+      data: {
+        "acc": "traer",
+        "idcliente": idcliente
+      }
+    }).done(function(data) {
+      var json = jQuery.parseJSON(data);
+      $('#codigoeditar').val(json.Id_tc);
+      $('#nombreeditar').val(json.Descripcion);
+      $('#descuentoeditar').val(json.Descuento);
+      $("#editarclientemodal").modal("show");
+    });
   });
 }
 
 
-var editarcliente = function()
-{
-  $("#editarcliente").on("click", function(){
+var editarcliente = function() {
+  $("#editarcliente").on("click", function() {
     var formeditar = $("#editarclienteform").serialize();
     $.ajax({
-        method: "POST",
-        url: "ajax/tipocliente.ajax.php",
-        data: formeditar
-      }).done(function(data) {
-        console.log("data", data);
-        if (data = "ok")
-        {
-          alert("exitos");
-          $("#editarclientemodal").modal("hide");
-        }else{
-          alert("error");
-        }
-      });
+      method: "POST",
+      url: "ajax/tipocliente.ajax.php",
+      data: formeditar
+    }).done(function(data) {
+      console.log("data", data);
+      if (data = "ok") {
+        alert("exitos");
+        swal({
+          title: "Exitos !",
+          text: "Registro Exitoso",
+          type: "success"
+        },function(){
+          window.location = "clientes";
+        });
+        $("#editarclientemodal").modal("hide");
+      } else {
+        swal({
+          title: "Advertencia !",
+          text: "Hubo un error al ejecutar la accion",
+          type: "warning"
+        });
+      }
+    });
   });
 }
 
 
 
-var eliminarcliente = function ()
-{
-  $("#tablaclientes").on("click", "button.del", function(){
+var eliminarcliente = function() {
+  $("#tablaclientes").on("click", "button.del", function() {
     idcliente = $(this).attr("id_cliente");
     $.ajax({
-        method: "POST",
-        url: "ajax/tipocliente.ajax.php",
-        data: {"acc": "del", "idcliente": idcliente}
-      }).done(function(data) {
-        console.log("data", data);
-        if (data = "ok")
-        {
-          tablapersona();
-          alert("exitos");
-        }else{
-          alert("error");
-        }
-      });
+      method: "POST",
+      url: "ajax/tipocliente.ajax.php",
+      data: {
+        "acc": "del",
+        "idcliente": idcliente
+      }
+    }).done(function(data) {
+      console.log("data", data);
+      if (data = "ok") {
+        swal({
+          title: "Exitos !",
+          text: "Eliminado Exitoso",
+          type: "success"
+        },function(){
+          window.location = "clientes";
+        });
+      } else {
+        swal({
+          title: "Advertencia !",
+          text: "Hubo un error al ejecutar la accion",
+          type: "warning"
+        });
+      }
+    });
   });
 }
-

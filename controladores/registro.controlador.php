@@ -22,7 +22,13 @@ class RegistroControlador{
 					echo "<script> alert('agregado');</script>";
 				}
 			}else{
-				echo "<script> alert('no se aceptan caracteres especiales');</script>";
+				echo'<script>
+									swal({
+										title: "Advertencia !",
+										text: "No se aceptan caracteres Especiales",
+										type: "warning"
+										});
+									</script>';
 			}
 		}
 	}

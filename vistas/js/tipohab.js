@@ -85,9 +85,19 @@ var creartipohabitacion = function()
         console.log("data", data);
         if (data = "ok")
         {
-          alert("exitos");
+          swal({
+          title: "Exitos !",
+          text: "Registro Exitoso",
+          type: "success"
+        },function(){
+          window.location = "habitaciones";
+        });
         }else{
-          alert("error");
+          swal({
+          title: "Warning !",
+          text: "Hubo un error al ejecutar la accion",
+          type: "warning"
+        });
         }
         $("#Nuevotipohabitacionmodal").modal("hide");
       });
@@ -125,9 +135,19 @@ var editartipohabitacion = function()
         console.log("data", data);
         if (data = "ok")
         {
-          alert("exitos");
+          swal({
+          title: "Exitos !",
+          text: "Registro Exitoso",
+          type: "success"
+        },function(){
+          window.location = "habitaciones"
+        });
         }else{
-          alert("error");
+          swal({
+          title: "Warning !",
+          text: "Hubo un error al ejecutar la accion",
+          type: "warning"
+        });
         }
         $("#editartipohabitacionmodal").modal("hide");
       });
@@ -147,9 +167,19 @@ var eliminartipohabitacion = function()
         console.log("data", data);
         if (data = "ok")
         {
-          alert("exitos");
+          swal({
+          title: "Exitos !",
+          text: "Eliminado Exitoso",
+          type: "success"
+        },function(){
+          window.location = "habitaciones";
+        });
         }else{
-          alert("error");
+          swal({
+          title: "Warning !",
+          text: "Hubo un error al ejecutar la accion",
+          type: "warning"
+        });
         }
       });
   });

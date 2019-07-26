@@ -206,10 +206,19 @@ var eliminarreserva = function ()
         success: function(respuesta) {
           console.log("respuesta", respuesta);
           if (respuesta == "ok") {
-            console.log("reserva eliminada");
-            window.location = "reserva";
+            swal({
+          title: "Exitos !",
+          text: "Eliminado Exitoso",
+          type: "success"
+        },function(){
+          window.location= "reserva";
+        });
           } else {
-            console.log("reserva no eliminada");
+            swal({
+          title: "Warning !",
+          text: "Hubo un error al ejecutar la accion",
+          type: "warning"
+        });
           }
         }
       });

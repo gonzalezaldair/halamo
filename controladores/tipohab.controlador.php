@@ -23,7 +23,13 @@ class TipoHabControlador{
 				$respuestamodelo = TipoHabModelo::mdlcreartipoh($tabla, $datoscontrolado);
 				return $respuestamodelo;
 			}else{
-				echo "<script> alert('no se aceptan caracteres especiales');</script>";
+				echo'<script>
+									swal({
+										title: "Advertencia !",
+										text: "No se aceptan caracteres Especiales",
+										type: "warning"
+										});
+									</script>';
 			}
 		}
 	}
@@ -37,7 +43,13 @@ class TipoHabControlador{
 				$respuestamodelo = TipoHabModelo::mdlupdtipoh($tabla, $datoscontrolador);
 				return $respuestamodelo;
 			}else{
-				echo "<script> alert('no se aceptan caracteres especiales');</script>";
+				echo'<script>
+									swal({
+										title: "Advertencia !",
+										text: "No se aceptan caracteres Especiales",
+										type: "warning"
+										});
+									</script>';
 			}
 		}
 	}

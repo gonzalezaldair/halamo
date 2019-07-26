@@ -91,11 +91,21 @@ var crearpersona = function()
         console.log("data", data);
         if (data)
         {
-          tablapersona();
-          alert("exitos");
+          swal({
+          title: "Exitos !",
+          text: "Registro Exitoso",
+          type: "success"
+        },function()
+        {
+          window.location = "persona";
+        });
           $("#NuevaPersona").modal("hide");
         }else{
-          alert("error");
+          swal({
+          title: "Warning !",
+          text: "Hubo un error al ejecutar la accion",
+          type: "success"
+        });
         }
       });
   });
@@ -119,6 +129,7 @@ var traerdatoseditarpersona = function ()
         $('#apellidoeditar').val(json.Apellido);
         $('#telefonoeditar').val(json.Movil);
         $('#direccioneditar').val(json.Direccion);
+        $("#tipoclienteeditar").val(json.TIPO_CLIENTE);
         $("#editarpersonamodal").modal("show");
       });
   });
@@ -135,12 +146,22 @@ var editarpersona = function()
         data: formeditar
       }).done(function(data) {
         console.log("data", data);
-        if (data)
+        if (data = "ok")
         {
-          tablapersona();
-          alert("exitos");
+          swal({
+          title: "Exitos !",
+          text: "Registro Exitoso",
+          type: "success"
+        },function()
+        {
+          window.location = "persona";
+        });
         }else{
-          alert("error");
+          swal({
+          title: "Warning !",
+          text: "Hubo un error al ejecutar la accion",
+          type: "success"
+        });
         }
         $("#editarpersonamodal").modal("hide");
       });
@@ -161,10 +182,20 @@ var eliminarpersona = function ()
         console.log("data", data);
         if (data)
         {
-          tablapersona();
-          alert("exitos");
+          swal({
+          title: "Exitos !",
+          text: "Elimnado Exitoso",
+          type: "success"
+        },function()
+        {
+          window.location = "persona";
+        });
         }else{
-          alert("error");
+          swal({
+          title: "Warning !",
+          text: "Hubo un error al ejecutar la accion",
+          type: "success"
+        });
         }
       });
   });

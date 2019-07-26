@@ -52,15 +52,16 @@ class PersonaModelo{
 	}
 	public function mdlactualizarpersona($tabla, $datosmodelo)
 	{
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET Nombre= :nombre,Apellido=:apellido,Direccion=:direccion,Movil=:movil WHERE Num_Documento = :cedula");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET Nombre= :nombre,Apellido=:apellido,Direccion=:direccion,Movil=:movil, TIPO_CLIENTE = :tipoc WHERE Num_Documento = :cedula");
 		$stmt -> bindParam(":nombre", $datosmodelo["nombre"], PDO::PARAM_STR);
 		$stmt -> bindParam(":apellido", $datosmodelo["apellido"], PDO::PARAM_STR);
 		$stmt -> bindParam(":direccion", $datosmodelo["direccion"], PDO::PARAM_STR);
 		$stmt -> bindParam(":movil", $datosmodelo["movil"], PDO::PARAM_INT);
+		$stmt -> bindParam(":tipoc", $datosmodelo["TIPOCLIENTE"], PDO::PARAM_INT);
 		$stmt -> bindParam(":cedula", $datosmodelo["cedula"], PDO::PARAM_STR);
 		if($stmt->execute())
 		{
-			return true;
+			return "ok";
 		}
 		else
 		{

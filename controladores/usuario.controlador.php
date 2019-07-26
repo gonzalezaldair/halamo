@@ -18,7 +18,13 @@ class UsuarioControlador{
 				$respuestausercrear = UsuarioModelo::mdlcrearusuario("usuario", $datoscontrolador);
 				echo $respuestausercrear;
 			}else{
-				echo "<script> alert('no se aceptan caracteres especiales');</script>";
+				echo'<script>
+									swal({
+										title: "Advertencia !",
+										text: "No se aceptan caracteres Especiales",
+										type: "warning"
+										});
+									</script>';
 			}
 		}
 	}
@@ -32,7 +38,13 @@ class UsuarioControlador{
 				$respuestauseractualizar = UsuarioModelo::mdlactualizarusuario("usuario", $datoscontrolador);
 				return $respuestauseractualizar;
 			}else{
-				echo "<script> alert('no se aceptan caracteres especiales');</script>";
+				echo'<script>
+									swal({
+										title: "Advertencia !",
+										text: "No se aceptan caracteres Especiales",
+										type: "warning"
+										});
+									</script>';
 			}
 		}
 	}

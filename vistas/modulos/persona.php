@@ -166,11 +166,29 @@ if ($_SESSION["rol"] == 3) {
                 <input type="email" id="correoeditar" name="correoeditar" placeholder="Ingrese Correo" class="form-control">
               </div>
             </div>-->
-            <div class="col-md-12 col-lg-12">
+            <div class="col-md-6 col-lg-6">
               <div class="input-group form-group">
                 <span class="input-group-addon"><i class="fa fa-home"></i></span>
                 <input type="text" id="direccioneditar" name="direccioneditar" placeholder="Ingrese Direccion" class="form-control">
               </div>
+            </div>
+
+            <div class="col-md-6 col-lg-6">
+              <div class="input-group form-group">
+                <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                <select class="form-control" name="tipoclienteeditar" id="tipoclienteeditar">
+                  <option>Seleccione: </option>
+                  <?php
+                    $item = null;
+                    $valor = null;
+                    $tipocliente= TipoClienteControlador::ctrmostrartipocliente($item, $valor);
+                    foreach ($tipocliente as $key => $value) {
+                      echo '<option value="'.$value["Id_tc"].'">'.$value["Descripcion"].'</option>';
+                    }
+                   ?>
+                </select>
+              </div>
+              <span id="help-blockper"></span>
             </div>
           </div><!-- FIN ROW -->
           <div class="modal-footer">
@@ -183,4 +201,12 @@ if ($_SESSION["rol"] == 3) {
     </div><!-- FIN MODAL CONTENT -->
   </div><!-- FIN MODAL DIALOG -->
 </div><!-- FIN MODAL -->
+
+
+<script>
+  $("#tipoclienteeditar").on("change", function(){
+    valortipocliente = $(this).val();
+    console.log("valortipocliente", valortipocliente);
+  })
+</script>
 

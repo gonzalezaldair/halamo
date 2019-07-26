@@ -15,7 +15,13 @@ class HabitacionControlador{
 				$respuestamodelo =HabitacionModelo::mdlcrearhabitacion("habitacion", $datoscontrolador);
 				return $respuestamodelo;
 			}else{
-				echo "<script> alert('no se aceptan caracteres especiales');</script>";
+				echo'<script>
+									swal({
+										title: "Advertencia !",
+										text: "No se aceptan caracteres Especiales",
+										type: "warning"
+										});
+									</script>';
 			}
 		}
 	}
@@ -28,7 +34,13 @@ class HabitacionControlador{
 			$respuestamodelo =HabitacionModelo::mdlupdhabitacion("habitacion", $datoscontrolador);
 			return $respuestamodelo;
 			}else{
-				echo "<script> alert('no se aceptan caracteres especiales');</script>";
+				echo'<script>
+									swal({
+										title: "Advertencia !",
+										text: "No se aceptan caracteres Especiales",
+										type: "warning"
+										});
+									</script>';
 			}
 		}
 	}

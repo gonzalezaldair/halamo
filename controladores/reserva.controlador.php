@@ -17,7 +17,13 @@ class ReservaControlador{
 				$respuestafunc = ReservaModelo::mdlcrearreserva($tabla,$datoscontrolador);
 				echo $respuestafunc;
 			}else{
-				echo "<script> alert('no se aceptan caracteres especiales');</script>";
+				echo'<script>
+									swal({
+										title: "Advertencia !",
+										text: "No se aceptan caracteres Especiales",
+										type: "warning"
+										});
+									</script>';
 			}
 		}
 	}
@@ -32,7 +38,13 @@ class ReservaControlador{
 					$respuestafunc = ReservaModelo::mdlupdreserva($tabla,$datoscontrolador);
 					echo $respuestafunc;
 			}else{
-				echo "<script> alert('no se aceptan caracteres especiales');</script>";
+				echo'<script>
+									swal({
+										title: "Advertencia !",
+										text: "No se aceptan caracteres Especiales",
+										type: "warning"
+										});
+									</script>';
 			}
 		}
 	}

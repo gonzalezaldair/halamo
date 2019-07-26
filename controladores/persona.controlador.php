@@ -15,7 +15,13 @@ class PersonaControlador{
 				$respuestapercrear = PersonaModelo::mdlcrearpersona("persona", $datoscontrolador);
 				return $respuestapercrear;
 			}else{
-				echo "<script> alert('no se aceptan caracteres especiales');</script>";
+				echo'<script>
+									swal({
+										title: "Advertencia !",
+										text: "No se aceptan caracteres Especiales",
+										type: "warning"
+										});
+									</script>';
 			}
 		}
 	}
@@ -23,12 +29,18 @@ class PersonaControlador{
 	public static function ctractualizarpersona()
 	{
 		if (isset($_POST["cedulaeditar"])) {
-			if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nombre"]) && preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["apellidoeditar"]) && preg_match('/^[0-9]+$/', $_POST["telefonoeditar"]) && preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["direccioneditar"])) {
-				$datoscontrolador = array('cedula' => $_POST["cedulaeditar"], 'nombre' => $_POST["nombreeditar"], 'apellido' => $_POST["apellidoeditar"], 'movil' => $_POST["telefonoeditar"], 'direccion' => $_POST["direccioneditar"]);
+			if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nombreeditar"]) && preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["apellidoeditar"]) && preg_match('/^[0-9]+$/', $_POST["telefonoeditar"]) && preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["direccioneditar"])) {
+				$datoscontrolador = array('cedula' => $_POST["cedulaeditar"], 'nombre' => $_POST["nombreeditar"], 'apellido' => $_POST["apellidoeditar"], 'movil' => $_POST["telefonoeditar"], 'direccion' => $_POST["direccioneditar"],'TIPOCLIENTE' => $_POST["tipoclienteeditar"]);
 				$respuestaperactualizar = PersonaModelo::mdlactualizarpersona("persona", $datoscontrolador);
-				return $respuestaperactualizar;
+				echo $respuestaperactualizar;
 			}else{
-				echo "<script> alert('no se aceptan caracteres especiales');</script>";
+				echo'<script>
+									swal({
+										title: "Advertencia !",
+										text: "No se aceptan caracteres Especiales",
+										type: "warning"
+										});
+									</script>';
 			}
 		}
 	}

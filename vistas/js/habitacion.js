@@ -87,9 +87,20 @@ var crearhabitacion = function()
         console.log("data", data);
         if (data = "ok")
         {
-          alert("exitos");
+          swal({
+          title: "Exitos !",
+          text: "Registro Exitoso",
+          type: "success"
+        },function()
+        {
+          window.location = "habitaciones";
+        });
         }else{
-          alert("error");
+          swal({
+          title: "Advertencia !",
+          text: "Hubo un error al ejecutar la accion",
+          type: "warning"
+        });
         }
         $("#Nuevahabitacionmodal").modal("hide");
       });
@@ -129,9 +140,20 @@ var editarhabitacion = function()
         console.log("data", data);
         if (data = "ok")
         {
-          alert("exitos");
+          swal({
+          title: "Exitos !",
+          text: "Registro Exitoso",
+          type: "success"
+        },function()
+        {
+          window.location = "habitaciones";
+        });
         }else{
-          alert("error");
+          swal({
+          title: "Advertencia !",
+          text: "Hubo un error al ejecutar la accion",
+          type: "warning"
+        });
         }
         $("#editarhabitacionmodal").modal("hide");
       });
@@ -151,9 +173,20 @@ var eliminarhabitacion = function()
         console.log("data", data);
         if (data = "ok")
         {
-          alert("exitos");
+          swal({
+          title: "Exitos !",
+          text: "Eliminado Exitoso",
+          type: "success"
+        },function()
+        {
+          window.location = "habitaciones";
+        });
         }else{
-          alert("error");
+          swal({
+          title: "Advertencia !",
+          text: "Hubo un error al ejecutar la accion",
+          type: "warning"
+        });
         }
       });
   });

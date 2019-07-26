@@ -94,11 +94,20 @@ var tablarol = function ()
         console.log("data", data);
         if (data = "ok")
         {
-          tablapersona();
-          alert("exitos");
+          swal({
+          title: "Exitos !",
+          text: "Registro Exitos",
+          type: "success"
+        },function(){
+          window.location = "rol";
+        });
           $("#Nuevorolmodal").modal("hide");
         }else{
-          alert("error");
+          swal({
+          title: "Warning !",
+          text: "Hubo un error al ejecutar la accion",
+          type: "warning"
+        });
         }
       });
   });
@@ -137,10 +146,17 @@ var editarrol = function()
         console.log("data", data);
         if (data = "ok")
         {
-          tablapersona();
-          alert("exitos");
+          swal({
+          title: "success !",
+          text: "Registro Exitoso",
+          type: "success"
+        });
         }else{
-          alert("error");
+          swal({
+          title: "Warning !",
+          text: "Hubo un error al ejecutar la accion",
+          type: "warning"
+        });
         }
         $("#editarrolmodal").modal("hide");
       });
@@ -160,10 +176,20 @@ var eliminarrol = function ()
       }).done(function(data) {
         if (data = "ok")
         {
-          tablapersona();
-          alert("exitos");
+          swal({
+          title: "Exitos !",
+          text: "Eliminado Exitoso",
+          type: "success"
+        },function()
+        {
+          window.location = "rol";
+        });
         }else{
-          alert("error");
+          swal({
+          title: "Warning !",
+          text: "Hubo un error al ejecutar la accion",
+          type: "warning"
+        });
         }
       });
   });
@@ -193,10 +219,19 @@ var rolfuncionalidad = function()
     }).done(function(data) {
       console.log("data", data);
       if (data = "ok") {
-        tablapersona();
-        alert("exitos");
+        swal({
+          title: "Exitos !",
+          text: "Registro exitoso",
+          type: "success"
+        },function(){
+          window.location = "rol";
+        });
       } else {
-        alert("error");
+        swal({
+          title: "Warning !",
+          text: "Hubo un error al ejecutar la accion",
+          type: "warning"
+        });
       }
     });
   });
