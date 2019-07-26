@@ -41,7 +41,6 @@ if ($_SESSION["rol"] != 1) {
           </div>
         <div class="box">
           <div class="box-header">
-            <button type="button" id="btn_nuevo" data-toggle="modal" data-target="#Nuevorolmodal" class="btn btn-primary btn-md"><i class="fa fa-plus">   </i>    Agregar</button>
           </div>
           <div class="box-body">
 
