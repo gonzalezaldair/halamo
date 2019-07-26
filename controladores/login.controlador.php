@@ -4,8 +4,7 @@ class LoginControlador{
 	public static function ctrlogin()
 	{
 		if (isset($_POST["correologin"])) {
-			if (preg_match('/^[a-zA-Z0-9@._]+$/', $_POST["correologin"])&&
-			   preg_match('/^[a-zA-Z0-9]+$/', $_POST["contrasenalogin"])) {
+			if (preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["correologin"]) && preg_match('/^[a-zA-Z0-9]+$/', $_POST["contrasenalogin"])) {
 			   	$encriptar = crypt($_POST["contrasenalogin"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 				$datosController = array("usuario"=>$_POST["correologin"],
 				                     "password"=>$encriptar);
@@ -18,7 +17,7 @@ class LoginControlador{
 					$_SESSION["rol"] = $respuestalogin["ROL"];
 					echo '<script> window.location = "inicio"; </script>';
 				}else{
-					echo '<div class="alert alert-danger">Error al ingresar '.$_POST["correologin"].' '.$_POST["contrasenalogin"].'</div>';
+					echo '<div class="alert alert-danger">Error al ingresar '.$_POST["correologin"].' Intente de nuevo</div>';
 				}
 			}
 		}

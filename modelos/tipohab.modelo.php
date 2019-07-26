@@ -29,6 +29,22 @@ class TipoHabModelo{
 		$stmt = null;
 	}
 
+	public function mdlmostrarhabtipohab($tabla, $item,$valor)
+	{
+
+		$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item ORDER BY $item DESC");
+
+		$stmt -> bindParam(":".$item, $valor);
+
+		$stmt -> execute();
+
+		return $stmt -> fetchAll();
+
+		$stmt -> close();
+
+		$stmt = null;
+	}
+
 	public function mdlcreartipoh($tabla, $datosmodelo)
 	{
 		$stmt = Conexion::conectar()->prepare("INSERT INTO tipo_habitacion(Descripcion, Precio) VALUES (:descripcion, :precio)");

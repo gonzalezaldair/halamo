@@ -106,10 +106,12 @@ var traerdatoshabitacion = function()
         url: "ajax/habitacion.ajax.php",
         data: {"acc": "traer", "idhabitacion": idhabitacion}
       }).done(function(data) {
+        var ruta = "vistas/dist/img/";
         var json = jQuery.parseJSON(data);
         $('#codigoeditar').val(json.Codigo);
         $('#numerohabitacioneditar').val(json.Num_Habitacion);
         $('#tipohabeditar').val(json.TIPO_HABITACION);
+        $('#imghabitacion').attr('src', ruta+json.Imagen);
         $("#editarhabitacionmodal").modal("show");
       });
   });

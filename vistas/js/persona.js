@@ -35,6 +35,12 @@ ELIMINAR PERSONA
 
 eliminarpersona();
 
+ /*=============================
+ELIMINAR PERSONA
+=============================*/
+
+
+validarsiexistepersona();
 
 });
 var tablapersona = function()
@@ -159,6 +165,28 @@ var eliminarpersona = function ()
           alert("exitos");
         }else{
           alert("error");
+        }
+      });
+  });
+}
+
+var validarsiexistepersona = function()
+{
+  $("#cedula").on("change", function(){
+    cedulavalida = $(this).val();
+    $.ajax({
+        method: "POST",
+        url: "ajax/persona.ajax.php",
+        data: {"acc": "traer", "idpersona": cedulavalida}
+      }).done(function(data) {
+        var json = jQuery.parseJSON(data);
+        console.log("json", json);
+        if (json != false)
+        {
+           $("#cedula").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> Persona ya existe.</div>');
+           $("#crearPersona").attr("disabled", true);
+        }else{
+          $("#crearPersona").removeAttr("disabled");
         }
       });
   });

@@ -24,14 +24,14 @@
       </div>
     </form>
 
-    <div class="social-auth-links text-center">
+    <!--<div class="social-auth-links text-center">
       <p>- O -</p>
       <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Ingresar usando Facebook</a>
       <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Ingresar usando Google+</a>
-    </div>
+    </div>-->
     <!-- /.social-auth-links -->
 
-    <a href="#">Olvido Su Contraseña</a><br>
+    <!--<a href="#">Olvido Su Contraseña</a><br>-->
     <a href="registro" class="text-center">Registrarse</a>
 
 

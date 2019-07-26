@@ -41,18 +41,26 @@ class RolControlador{
 	public static function ctrcrearrol()
 	{
 		if (isset($_POST["nombre"])) {
-			$datoscontrolador = array('nombre' => $_POST["nombre"], 'descripcion' => $_POST["detalles"]);
-			$respuestarolcrear = RolModelo::mdlcrearrol("rol", $datoscontrolador);
-			echo $respuestarolcrear;
+			if (preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nombre"]) && preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["detalles"])) {
+				$datoscontrolador = array('nombre' => $_POST["nombre"], 'descripcion' => $_POST["detalles"]);
+				$respuestarolcrear = RolModelo::mdlcrearrol("rol", $datoscontrolador);
+				echo $respuestarolcrear;
+			}else{
+				echo "<script> alert('no se aceptan caracteres especiales');</script>";
+			}
 		}
 	}
 
 	public static function ctractualizarrol()
 	{
 		if (isset($_POST["roleditar"])) {
-			$datoscontrolador = array('nombre' => $_POST["nombreeditar"], 'descripcion' => $_POST["detalleseditar"], 'id' => $_POST["roleditar"]);
-			$respuestarolactu = RolModelo::mdlactualizarrol("rol", $datoscontrolador);
-			echo $respuestarolactu;
+			if (preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nombreeditar"]) && preg_match('/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["detalleseditar"])) {
+				$datoscontrolador = array('nombre' => $_POST["nombreeditar"], 'descripcion' => $_POST["detalleseditar"], 'id' => $_POST["roleditar"]);
+				$respuestarolactu = RolModelo::mdlactualizarrol("rol", $datoscontrolador);
+				echo $respuestarolactu;
+			}else{
+				echo "<script> alert('no se aceptan caracteres especiales');</script>";
+			}
 		}
 	}
 

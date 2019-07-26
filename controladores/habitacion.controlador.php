@@ -10,18 +10,26 @@ class HabitacionControlador{
 	public static function ctrcrearhabitacion()
 	{
 		if (isset($_POST["numerohabitacion"])) {
-			$datoscontrolador = array('numhab' => $_POST["numerohabitacion"], 'tipohab' => $_POST["tipohab"]);
-			$respuestamodelo =HabitacionModelo::mdlcrearhabitacion("habitacion", $datoscontrolador);
-			return $respuestamodelo;
+			if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["numerohabitacion"]) && preg_match('/^[a-zA-Z0-9]+$/', $_POST["tipohab"])) {
+				$datoscontrolador = array('numhab' => $_POST["numerohabitacion"], 'tipohab' => $_POST["tipohab"]);
+				$respuestamodelo =HabitacionModelo::mdlcrearhabitacion("habitacion", $datoscontrolador);
+				return $respuestamodelo;
+			}else{
+				echo "<script> alert('no se aceptan caracteres especiales');</script>";
+			}
 		}
 	}
 
 	public static function ctrupdhabitacion()
 	{
 		if (isset($_POST["codigoeditar"])) {
-			$datoscontrolador = array('codigo' => $_POST["codigoeditar"], 'numhab' => $_POST["numerohabitacioneditar"],  'tipohab' => $_POST["tipohabeditar"]);
+			if (preg_match('/^[a-zA-Z0-9]+$/', $_POST["numerohabitacioneditar"]) && preg_match('/^[a-zA-Z0-9]+$/', $_POST["tipohabeditar"])) {
+				$datoscontrolador = array('codigo' => $_POST["codigoeditar"], 'numhab' => $_POST["numerohabitacioneditar"],  'tipohab' => $_POST["tipohabeditar"]);
 			$respuestamodelo =HabitacionModelo::mdlupdhabitacion("habitacion", $datoscontrolador);
 			return $respuestamodelo;
+			}else{
+				echo "<script> alert('no se aceptan caracteres especiales');</script>";
+			}
 		}
 	}
 

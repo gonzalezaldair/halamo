@@ -15,12 +15,13 @@ class tablaHabitacion{
 		$datosJson = '{"data":[';
 		for ($i=0; $i < count($habitacion); $i++) {
 			$botones = "<button type='button' id_habitacion='".$habitacion[$i]["Codigo"]."' class='upd btn btn-success btn-xs'><i class='fa fa-pencil-square-o'></i></button> <button  type='button' id_habitacion='".$habitacion[$i]["Codigo"]."' class='del btn btn-danger btn-xs'><i class='fa fa-trash-o'></i></button>";
+			$img = "<img id='imghabitacion' src='vistas/dist/img/".$habitacion[$i]["Imagen"]."' width='100%' class='img-thumbnail' alt='".$habitacion[$i]["Imagen"]."'>";
 				$tipohabitacion = TipoHabControlador::ctrmostrartipohab("Id_th", $habitacion[$i]["TIPO_HABITACION"]);
 				$datosJson .='[
 						"'.$habitacion[$i]["Num_Habitacion"].'",
 						"'.$habitacion[$i]["Disponible"].'",
 						"'.$tipohabitacion["Descripcion"].'",
-						"'.$habitacion[$i]["Imagen"].'",
+						"'.$img.'",
 						"'.$botones.'"
 					],';
 		}

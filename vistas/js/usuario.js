@@ -33,6 +33,15 @@ ELIMINAR USUARIO
 
 eliminarusuario();
 
+
+
+
+/*=============================
+ELIMINAR USUARIO
+=============================*/
+
+validarsiexisteusuario();
+
 });
 
 
@@ -126,7 +135,6 @@ var editarusuario = function()
       }).done(function(data) {
         if (data = "ok")
         {
-          tablapersona();
           alert("exitos");
         }else{
           alert("error");
@@ -149,10 +157,33 @@ var eliminarusuario = function ()
       }).done(function(data) {
         if (data = "ok")
         {
-          tablapersona();
           alert("exitos");
         }else{
           alert("error");
+        }
+      });
+  });
+}
+
+
+
+var validarsiexisteusuario = function()
+{
+  $("#correo").on("change", function(){
+    correovalida = $(this).val();
+    $.ajax({
+        method: "POST",
+        url: "ajax/usuario.ajax.php",
+        data: {"acc": "traer", "idusuario": correovalida}
+      }).done(function(data) {
+        var json = jQuery.parseJSON(data);
+        console.log("json", json);
+        if (json != false)
+        {
+           $("#correo").parent().before('<div class="alert alert-warning"><strong>ERROR:</strong> Usuario ya existe.</div>');
+           $("#crearusuario").attr("disabled", true);
+        }else{
+          $("#crearusuario").removeAttr("disabled");
         }
       });
   });

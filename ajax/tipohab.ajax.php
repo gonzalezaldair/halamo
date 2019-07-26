@@ -48,6 +48,12 @@ if (isset($_POST["acc"])) {
 			$tipohabitacion = TipoHabControlador::ctrmostrartipohab($item, $valor);
 			echo json_encode($tipohabitacion);
 			break;
+		case 'traerhab':
+			$item = "TIPO_HABITACION";
+			$valor = $_POST["idhabitacion"];
+			$tipohabitacion = TipoHabControlador::ctrmostrarhabtipohab($item, $valor);
+			echo json_encode($tipohabitacion);
+			break;
 
 		default:
 			$activarrol = new tablaTipohab();

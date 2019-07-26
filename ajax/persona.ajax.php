@@ -7,6 +7,10 @@ require_once '../controladores/persona.controlador.php';
 require_once '../modelos/tipodoc.modelo.php';
 require_once '../controladores/tipodoc.controlador.php';
 
+
+require_once '../modelos/tipocliente.modelo.php';
+require_once '../controladores/tipocliente.controlador.php';
+
 class tablaPersona{
 	public function mostrartablapersona()
 	{
@@ -54,6 +58,13 @@ if (isset($_POST["acc"])) {
 		case 'del':
 			$eliminarpersona = new PersonaControlador();
 			$eliminarpersona -> ctraeliminarpersona();
+			break;
+		case 'traerdescuento':
+			$item = "Num_Documento";
+			$valor = $_POST["persona"];
+			$traerdatospersona = PersonaControlador::ctrmostrarpersona($item, $valor);
+			$traerdescuento = TipoClienteControlador::ctrmostrartipocliente("Id_tc", $traerdatospersona["TIPO_CLIENTE"]);
+			echo json_encode($traerdescuento);
 			break;
 
 		default:

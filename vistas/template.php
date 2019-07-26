@@ -142,7 +142,8 @@
 				$_GET["action"]== "reporte" ||
 				$_GET["action"]== "reserva" ||
 				$_GET["action"]== "rol" ||
-				$_GET["action"]== "usuario"){
+				$_GET["action"]== "usuario" ||
+				$_GET["action"]== "clientes"){
 				include "modulos/".$_GET["action"].".php";
 				include 'modulos/footer.php';
 			}else{
@@ -180,6 +181,8 @@ else
 	<script src="vistas/js/habitacion.js"></script>
 	<script src="vistas/js/tipohab.js"></script>
 	<script src="vistas/js/reserva.js"></script>
+	<script src="vistas/js/registro.js"></script>
+	<script src="vistas/js/cliente.js"></script>
 
 </body>
 </html>

@@ -1,3 +1,8 @@
+<?php
+if ($_SESSION["rol"] == 3) {
+   echo '<script> window.location = "inicio"; </script>';
+ }
+ ?>
 <div class="content-wrapper">
 	<section class="content-header">
     <h1>
@@ -22,7 +27,7 @@
                     <th>NUM HABITACION</th>
                     <th>ESTADO</th>
                     <th>T. HABITACION</th>
-                    <th>IMG</th>
+                    <th style="width: 20px;">IMG</th>
                     <th>ACCIONES</th>
                   </tr>
                 </thead>
@@ -146,6 +151,9 @@
                    ?>
                 </select>
               </div>
+            </div>
+            <div class="col-md-12" style="margin-left: auto; margin-right: auto; display: block;">
+              <img id="imghabitacion" src="vistas/dist/img/simple.png" width="70%" class="img-thumbnail" alt="">
             </div>
           </div><!-- FIN ROW -->
           <div class="modal-footer">

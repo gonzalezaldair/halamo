@@ -1,3 +1,8 @@
+<?php
+if ($_SESSION["rol"] != 1) {
+   echo '<script> window.location = "inicio"; </script>';
+ }
+ ?>
 <div class="content-wrapper">
 	<section class="content-header">
     <h1>

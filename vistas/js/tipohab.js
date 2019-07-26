@@ -106,6 +106,7 @@ var traerdatostipohabitacion = function()
         var json = jQuery.parseJSON(data);
         $('#codigotipoheditar').val(json.Id_th);
         $('#nombretipohabeditar').val(json.Descripcion);
+        $('#preciotipohabeditar').val(json.Precio);
         $("#editartipohabitacionmodal").modal("show");
       });
   });
