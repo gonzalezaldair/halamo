@@ -19,7 +19,13 @@ class RegistroControlador{
 				$datoscontroladoruser = array('correo' => $correo, 'contrasena' => $encrypt, 'agregado' => $fecha, 'persona' => $cedula);
 				$registrouser = registroModelo::mdlformregistrouser("usuario", $datoscontroladoruser);
 				if ($registropersona == "ok" && $registrouser == "ok") {
-					echo "<script> alert('agregado');</script>";
+					echo '<script> swal({
+						          title: "Exitos !",
+						          text: "Registro Exitoso",
+						          type: "success"
+						        },function(){
+						          window.location = "login";
+						        });';
 				}
 			}else{
 				echo'<script>
